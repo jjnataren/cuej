@@ -1,0 +1,5 @@
+|||	2017-10-18	05:00:18 		ACTUALIZAR	UPDATE alumnos_evaluaciones SET calificacion = '5', evaluacion_fecha = '2017-10-18' WHERE id_alumno_evaluacion = '5722';
+|||	2017-10-18	05:00:31 		ACTUALIZAR	UPDATE alumnos_evaluaciones SET calificacion = '8', evaluacion_fecha = '2017-10-18' WHERE id_alumno_evaluacion = '5803';
+|||	2017-10-19	11:54:55 		ACTUALIZAR	UPDATE alumnos_historial SET calificacion = '5', id_ciclo_escolar = '28', tipo = '1', equivalencia = 1 WHERE id_alumno_programa = '91' AND id_materia = '46';
+|||	2017-10-19	11:54:56 		ACTUALIZAR	UPDATE alumnos_historial SET calificacion = '8', id_ciclo_escolar = '28', tipo = '1', equivalencia = 1 WHERE id_alumno_programa = '116' AND id_materia = '46';
+|||	2017-10-19	11:54:56 		ACTUALIZAR	UPDATE horarios SET acta_cerrada = 1, migracion = 1 WHERE id_grupo = '111' AND id_materia = '46';

@@ -1,0 +1,313 @@
+-- phpMyAdmin SQL Dump
+-- version 4.2.12deb2+deb8u1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jul 28, 2016 at 11:47 AM
+-- Server version: 5.5.49-0+deb8u1
+-- PHP Version: 5.6.22-0+deb8u1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `sicuej`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alumnos_contactos`
+--
+
+CREATE TABLE IF NOT EXISTS `alumnos_contactos` (
+`id_alumno_contacto` int(11) NOT NULL,
+  `id_alumno` int(11) NOT NULL,
+  `tipo_contacto` int(1) NOT NULL COMMENT '1= Telefono Casa 2 = Telefono Celular 3 = correo electronico',
+  `contacto` varchar(50) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=251 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `alumnos_contactos`
+--
+
+INSERT INTO `alumnos_contactos` (`id_alumno_contacto`, `id_alumno`, `tipo_contacto`, `contacto`) VALUES
+(1, 1, 1, '4752-4153 '),
+(2, 1, 2, '4752-4153 '),
+(3, 1, 3, 'proyectosdevivienda2@gmail.com'),
+(4, 3, 1, '26818995'),
+(5, 3, 3, 'abuelocarlos_17@hotmail.com'),
+(6, 5, 1, '4616 2341'),
+(7, 5, 3, 'ladpo@gmail.com'),
+(8, 8, 1, '044 55 4848 7919'),
+(9, 8, 3, 'estibalitzlegre@hotmail.com'),
+(10, 9, 1, '65528573'),
+(11, 9, 3, 'kjperfectgirl@gmail.com'),
+(12, 12, 1, '044 55-3697-8827'),
+(13, 12, 3, 'calavera@hotmail.com'),
+(14, 15, 1, '5543604728'),
+(15, 15, 3, 'laluco_01@hotmail.com'),
+(16, 16, 1, '044 55 8565 2965'),
+(17, 16, 3, 'aloncarr15@gmail.com'),
+(18, 18, 1, '044 55 03 3598'),
+(19, 18, 2, '044 55 03 3598'),
+(20, 18, 3, 'jcastellan@prodigy.net.mx'),
+(21, 19, 1, '12727171'),
+(22, 19, 3, 'nebulosa_universo@hotmail.com'),
+(23, 22, 1, '22912250'),
+(24, 22, 3, 'matadod_13@hotmail.com '),
+(25, 24, 1, '5548522403'),
+(26, 24, 2, '5548522403'),
+(27, 24, 3, 'reatex666@gmail.com'),
+(28, 27, 1, '04455 4134 7979'),
+(29, 27, 2, '04455 4134 7979'),
+(30, 27, 3, 'piry_77@hotmail.com'),
+(31, 28, 1, '56356140'),
+(32, 28, 3, 'ed76387@gmail.com'),
+(33, 33, 1, '56027502'),
+(34, 33, 3, 'stfo10@gmail.com'),
+(35, 35, 1, '5715-4066 '),
+(36, 35, 2, '5514917033'),
+(37, 35, 3, 'fabiola.florest@icloud.com'),
+(38, 36, 1, '58422403'),
+(39, 36, 3, 'chiscostmi2@hotmail.com'),
+(40, 40, 1, '52434923'),
+(41, 40, 2, '5554172743'),
+(42, 40, 3, 'marisol_glzd@hotmail.com'),
+(43, 43, 1, '044 55 44 9512 57'),
+(44, 43, 3, 'rininvain@gmail.com'),
+(45, 44, 1, '84886075 EXT 5168'),
+(46, 44, 3, 'marugtz_22@hotmail.com'),
+(47, 46, 1, '55-71-83-00'),
+(48, 46, 3, 'adanielhdz@hotmail.com'),
+(49, 48, 1, '56100654'),
+(50, 48, 3, 'fermerjim31@hotmail.com'),
+(51, 49, 1, '2615-9572 '),
+(52, 49, 2, '2615-9572 '),
+(53, 49, 3, 'reveurpeu_pikizz@hotmail.com'),
+(54, 52, 1, '56723534'),
+(55, 52, 2, '04455 4576 2314'),
+(56, 52, 3, 'juan.c.jv988710@hotmail.com'),
+(57, 54, 1, '044 55 9106 0733'),
+(58, 54, 3, 'cesar_six15@hotmail.com'),
+(59, 56, 1, '044 55-3674-4103'),
+(60, 56, 3, 'so_sweete14@hotmail.com.es'),
+(61, 59, 1, '5513615359'),
+(62, 59, 3, 'naturaleza.1959@hotmail.com'),
+(63, 60, 1, '5610-9640'),
+(64, 60, 2, '5610-9640'),
+(65, 60, 3, 'mauricio_luna_86@hotmail.com'),
+(66, 61, 1, '56468435'),
+(67, 61, 3, 'djsperclz_bvlgati@hotmail.com'),
+(68, 62, 1, '56468435'),
+(69, 62, 3, 'yare.macias@hotmail.com'),
+(70, 63, 1, '41735124'),
+(71, 63, 3, 'mancilla.aurora@yahoo.com'),
+(72, 64, 1, '044 55 6009 5384'),
+(73, 64, 3, 'alma_legn@hotmail.com'),
+(74, 66, 1, '47457152'),
+(75, 66, 2, '5546414092'),
+(76, 66, 3, 'beetsy099@gmail.com'),
+(77, 67, 1, '66468810'),
+(78, 67, 2, '04455-64-47-15-16'),
+(79, 67, 3, 'Guns_N_Asian@hotmail.com'),
+(80, 68, 1, '044 55 43604728'),
+(81, 68, 3, 'laluco_01@hotmail.com'),
+(82, 70, 1, '044 5539600 615'),
+(83, 77, 1, '52432680'),
+(84, 77, 3, 'gbmontiel@hotmail.com'),
+(85, 78, 1, '57013898'),
+(86, 83, 1, '53950719'),
+(87, 83, 3, 'josefinaquinterobarrera@yahoo.com.mx '),
+(88, 85, 1, '044 55 936760'),
+(89, 85, 3, 'josecpv@live.com.mx'),
+(90, 86, 1, '044 55 449367 60'),
+(91, 86, 3, 'josecpv@live.com.mx'),
+(92, 88, 1, '044 55 2736 4784'),
+(93, 88, 2, '044 55 2736 4784'),
+(94, 88, 3, 'rperez@acuatic.com.mx'),
+(95, 89, 1, '44 55 1865 6461'),
+(96, 89, 3, 'saavedra.ivan@yahoo.com.mx'),
+(97, 91, 1, '5628 0400 EXT.349'),
+(98, 91, 3, '-'),
+(99, 92, 1, '65489151'),
+(100, 92, 3, 'lis_aven@hotmail.com'),
+(101, 93, 1, '5525199925'),
+(102, 93, 3, 'Iiframirez001@hotmail.com'),
+(103, 94, 1, '30994488'),
+(104, 94, 3, 'olace613@gmail.com'),
+(105, 95, 1, '1674 4319'),
+(106, 95, 3, 'joscar_653@gmail.com'),
+(107, 97, 1, '9717277343'),
+(108, 97, 3, 'rc_sebastian95@hotmail.com'),
+(109, 98, 1, '5526678360'),
+(110, 98, 3, 'criz_musik4@hotmail.com'),
+(111, 99, 1, '5631-6867 '),
+(112, 99, 2, '5631-6867 '),
+(113, 99, 3, 'cesarazul_94@hotmail.com'),
+(114, 100, 1, '56316867'),
+(115, 100, 2, '5513813864'),
+(116, 100, 3, 'v-pumas@hotmail.com'),
+(117, 101, 1, '044 5561 0892 57 '),
+(118, 101, 3, 'ivonneriosp@yahoo.com'),
+(119, 102, 1, '-'),
+(120, 102, 3, '-'),
+(121, 107, 1, '56745350'),
+(122, 107, 3, 'alfredoromerocanedo@gmail.com'),
+(123, 109, 1, '56745350'),
+(124, 109, 2, '044 55 2940 8304'),
+(125, 109, 3, 'marlethromero.ruizcortines@gmail.com'),
+(126, 110, 1, '044 55 3760 8918'),
+(127, 110, 3, 'adrian_rosas68@hotmail.com'),
+(128, 111, 1, '044 55 3111 5119'),
+(129, 111, 3, 'selenesaavedra@hotmail.com'),
+(130, 112, 1, '044 55 2656 4733'),
+(131, 112, 3, 'oliviasaav@yahoo.com.mx'),
+(132, 113, 1, '5672-2418 '),
+(133, 113, 2, '5672-2418 '),
+(134, 113, 3, 'sadaoisabel@hotmail.com'),
+(135, 116, 1, '55430218'),
+(136, 116, 2, '5527368037'),
+(137, 116, 3, '-'),
+(138, 118, 1, '56433922'),
+(139, 118, 3, '-'),
+(140, 122, 1, '56444753'),
+(141, 122, 3, '-'),
+(142, 123, 1, '2616-2042 '),
+(143, 123, 2, '5511563454'),
+(144, 123, 3, 'noemi_leo044@hotmail.com'),
+(145, 124, 1, '56190636'),
+(146, 124, 2, '5529530405'),
+(147, 124, 3, 'anavargas_8@hotmail.com'),
+(148, 131, 1, '5523656017'),
+(149, 132, 1, '56178684'),
+(150, 132, 3, 'kobato241@yahoo.com.mx'),
+(151, 133, 1, '2594-5575 '),
+(152, 133, 2, '2594-5575 '),
+(153, 133, 3, 'angelder12@hotmail.com'),
+(154, 135, 1, '5591112508'),
+(155, 135, 2, '5591112508'),
+(156, 135, 3, 'jizg80@gmail.com'),
+(157, 136, 1, '21562038'),
+(158, 136, 2, '5513092977'),
+(159, 136, 3, 'libertadlinda@hotmail.com'),
+(160, 137, 1, '57338791'),
+(161, 137, 2, '4431907366'),
+(162, 137, 3, 'mindya@live.com.mx'),
+(163, 138, 1, ''),
+(164, 138, 2, '55555555'),
+(165, 138, 3, 'FULANITO@HOTMAIL.COM'),
+(166, 2, 1, '58427478'),
+(167, 2, 2, '5529638493'),
+(168, 2, 3, 'maualp17@gmail.com '),
+(169, 13, 1, '56335489'),
+(170, 13, 2, '3331708812'),
+(171, 13, 3, 'sunnset_resonnant@hotmail.com'),
+(172, 94, 2, '044 5514528276'),
+(173, 105, 2, '5564938963'),
+(174, 105, 3, 'monzitawn@hotmail.com'),
+(175, 126, 1, '56427431'),
+(176, 126, 2, '5562150521'),
+(177, 126, 3, 'jennyfervr93@gmail.com'),
+(178, 10, 2, '5534116346'),
+(179, 21, 1, '55496684'),
+(180, 21, 3, 'tanyc_stars13@hotmail.com'),
+(181, 29, 3, 'lalodiaz9609@gmail.com'),
+(182, 29, 2, '5529173189'),
+(183, 37, 1, '22367579'),
+(184, 37, 2, '0445539621839'),
+(185, 37, 3, 'dario_ivancdmx@hotmail.com'),
+(186, 81, 3, 'karenca_19@hotmail.com'),
+(187, 82, 1, '52439325'),
+(188, 82, 2, '5562163828'),
+(189, 82, 3, 'salvatore_31@live.com.mx'),
+(190, 90, 3, 'cpliego61@hotmail.com'),
+(191, 90, 2, '5538822886'),
+(192, 115, 1, '58584072'),
+(193, 115, 2, '5529572510'),
+(194, 115, 3, 'bryan_cb12@hotmail.com'),
+(195, 119, 1, '53005068'),
+(196, 119, 2, '5564419152'),
+(197, 119, 3, 'andreaelizabeth@live.com.mx'),
+(198, 120, 1, '56012944'),
+(199, 120, 2, '5540726024'),
+(200, 120, 3, 'tominaga-itoshi@hotmail.com'),
+(201, 132, 2, '55 4250 9318'),
+(202, 3, 2, '5529537512'),
+(203, 36, 2, '5534912824'),
+(204, 97, 2, '9717277343'),
+(205, 9, 2, '5529639168'),
+(206, 61, 2, '5541311654'),
+(207, 34, 3, 'cheo_homero_simpson@hotmail.com'),
+(208, 34, 2, '5526532559'),
+(209, 22, 2, '5515763490'),
+(210, 33, 2, '5534211800'),
+(211, 39, 3, 'zianya_aditi@hotmail.com'),
+(212, 39, 2, '5512580046'),
+(213, 39, 1, '58471238'),
+(214, 45, 3, 'mo_nd_25@hotmail.com'),
+(215, 45, 2, '5554656176'),
+(216, 45, 1, '21576231'),
+(217, 84, 3, 'aracelimorales7@hotmail.com'),
+(218, 84, 2, '5525253525'),
+(219, 84, 1, '54218521'),
+(220, 96, 3, 'rodrigoa.reyesba@hotmail.com '),
+(221, 96, 2, '5564158800'),
+(222, 96, 1, '70266946'),
+(223, 7, 2, '5548044425'),
+(224, 7, 3, 'stratocaster_jr4@yahoo.com.mx'),
+(225, 7, 1, '51123452'),
+(226, 78, 3, 'beremi_17@hotmail.com'),
+(227, 78, 2, '5532015634'),
+(228, 77, 2, '5515234278'),
+(229, 73, 3, 'carlospeetz@gmail.com '),
+(230, 73, 2, '5522576452'),
+(231, 73, 1, '55174374'),
+(232, 112, 2, '5526564733'),
+(233, 122, 2, '5524277648'),
+(234, 19, 2, '5531409517'),
+(235, 28, 2, '5529180003'),
+(236, 44, 2, '5535569639'),
+(237, 139, 1, '59163463'),
+(238, 139, 2, '5526719169'),
+(239, 139, 3, 'gilbertom654@gmail.com'),
+(240, 140, 1, '0445511363719'),
+(241, 140, 2, '5519265674'),
+(242, 140, 3, 'gabby_2301@hotmail.com'),
+(243, 48, 2, '5563580978'),
+(244, 62, 2, '5541311654'),
+(245, 63, 2, '5539413948'),
+(246, 92, 2, '5527090820'),
+(247, 107, 2, '5523300490'),
+(248, 141, 1, '2376312'),
+(249, 141, 2, '7222402456'),
+(250, 141, 3, 'montse.escobar.b@hotmail.com');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `alumnos_contactos`
+--
+ALTER TABLE `alumnos_contactos`
+ ADD PRIMARY KEY (`id_alumno_contacto`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `alumnos_contactos`
+--
+ALTER TABLE `alumnos_contactos`
+MODIFY `id_alumno_contacto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=251;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

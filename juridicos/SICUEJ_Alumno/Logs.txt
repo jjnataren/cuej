@@ -1,0 +1,2 @@
+|||	2017-10-18	05:00:18 		ACTUALIZAR	UPDATE alumnos_evaluaciones SET calificacion = '5', evaluacion_fecha = '2017-10-18' WHERE id_alumno_evaluacion = '5722';
+|||	2017-10-18	05:00:31 		ACTUALIZAR	UPDATE alumnos_evaluaciones SET calificacion = '8', evaluacion_fecha = '2017-10-18' WHERE id_alumno_evaluacion = '5803';
