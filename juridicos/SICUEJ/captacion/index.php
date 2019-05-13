@@ -54,29 +54,64 @@ include ("../php/HTML.php");
 
 
 
-<script type="text/javascript" src="../js/flexigrid.pack.js"></script>
-<script type="text/javascript" src="../js/Funciones_Jquery_Captacion.js"></script>
+<script type="text/javascript" src="../js/captacion/funciones.js"></script>
+<script src="../js/ck/ckeditor.js"></script>
+<script src="../js/jquery-ui.js" ></script>
+
 <script type="text/javascript" >
 
 	$('Body').ready(function(){
 
 		var table = 	 $('#tbl_captacion').DataTable();
 
-	/*	Captacion_B
-	uscar();
 
-		$('#Btn_Buscar').click(function(){
-			Captacion_Buscar();
-		});
-		*/
-		$('#Btn_Nuevo').click(function(){
-			Captacion_Nuevo();
+
+		$('#btnNuevo').click(function(){
+			nuevo();
 		});
 
 
-		$('#Btn_Update').click(function(){
-			Captacion_Nuevo();
+		$('#btnBuscar').click(function(){
+
+			if($('#inicio').val().trim() != ""){
+
+
+				if($('#fin').val().trim() != ""){
+
+					//buscar();
+
+					if ($('#inicio').val() > $('#fin').val()){
+
+						alert("La fecha de inicio debe ser menor o igual a la de fin.");
+						$('#inicio').focus();
+
+						}else{
+
+							buscar();
+
+							}
+
+				}else{
+
+					alert("Debe introducir una fecha de fin");
+					$('#fin').focus();
+				}
+
+
+			}else{
+
+				alert("Debe introducir una fecha de inicio");
+				$('#inicio').focus();
+			}
+
+
+
 		});
+
+
+		$( "#inicio" ).datepicker({dateFormat: "dd/mm/yy"});
+
+		$( "#fin" ).datepicker({dateFormat: "dd/mm/yy"});
 
 
 		$('#tbl_captacion tbody').on( 'click', 'tr', function () {
@@ -86,7 +121,14 @@ include ("../php/HTML.php");
 
 		$('#btnContactar').click(function(){
 
-			contactar(JSON.stringify(table.rows('.selected').data()) );
+
+
+			if ( table.rows('.selected').data().length > 0)
+
+				contactar(JSON.stringify(table.rows('.selected').data()) );
+
+			else
+				alert ("Debe seleccionar un elemento.");
 
 		});
 
@@ -111,14 +153,40 @@ $results = mysqli_query($conexion,$sql);
 
 ?>
 
-<table  width="100%" align="center">
+
+<?php if (isset($_SESSION["MAIL_ERRORS"])):?>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Error: </strong> <?php echo $_SESSION["MAIL_ERRORS"];?>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<?php unset( $_SESSION["MAIL_ERRORS"]);?>
+
+<?php elseif(isset($_SESSION["MAIL_OK"])):?>
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Correcto: </strong> <?php echo $_SESSION["MAIL_OK"];?>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<?php unset( $_SESSION["MAIL_OK"]);?>
+
+<?php endif;?>
+
+<table style="width: 100%;" align="center">
 	<thead>
 		<tr>
-			<th  colspan="4">Procesos de captación <div class="header_01"><hr /></div></th>
+			<th  colspan="4">PROCESO DE CAPTACIÓN<div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 </table>
-	<table width="100%" align="center">
+	<table style="width: 100%;"  align="center">
 		<tr>
 			<td>
 			</td>
@@ -130,7 +198,7 @@ $results = mysqli_query($conexion,$sql);
 ?>
 
 
-				<input class="button" type="button" id = "Btn_Nuevo" name = "Btn_Nuevo"  value = "Nuevo" />
+				<input class="button" type="button" id = "btnNuevo" name = "btnNuevo"  value = "Nuevo" />
 				<input class="button" type="button" id = "btnContactar" name = "Btn_Nuevo"  value = "Contactar" />
 <?php
 	}
@@ -139,9 +207,15 @@ $results = mysqli_query($conexion,$sql);
 		</tr>
 	</table>
 <p>&nbsp;</p>
+
 <div id="div_captacion">
+
+<h4>
+	Últimos procesos de captación
+</h4>
+<hr />
 <div class="table-responsive">
-	<table id="tbl_captacion" class="table table-sm table-hover" style="width:100%">
+	<table id="tbl_captacion" class="table  table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
 			<th>Id</th>
@@ -191,10 +265,15 @@ $results = mysqli_query($conexion,$sql);
 
 			<tr>
 				<td><a href="javascript: Captacion_Datos(<?php echo $row['id'];?>)"><?php echo $row["id"]; ?></a> </td>
-				<td><?php echo $row["captacion_fecha_alta"]; ?></td>
+				<td><?php echo
+
+
+				date('d/m/Y h:i' , strtotime($row["captacion_fecha_alta"]) ); ?></td>
+
+
 				<td>
 					<?php echo  $estatusNuevo; ?>
-					<i class="<?php echo $icon;?>"></i>
+
 
 				</td>
 				<td><?php echo $row["cliente_nombre"]; ?></td>
@@ -219,6 +298,43 @@ $results = mysqli_query($conexion,$sql);
 	</table>
 </div>
 </div>
+<br />
+<form id="frmCaptacion">
+	<table style="width: 100%; align-content: center;" class="table">
+		<thead>
+			<tr>
+				<th colspan="4">Búsqueda avanzada</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			<td>
+				<div class="form-group col-md-8">
+                                <label for="inicio">Inicio</label>
+                                <input readonly="readonly" required="required" class="form-control" id="inicio" name="inicio" aria-describedby="inicioHelp" placeholder="Clic para Ingresar valor">
+                                <small id="inicioHelp" class="form-text text-muted">Fecha inicio de busqueda</small>
+                    </div>
+
+			</td>
+			<td>
+				<div class="form-group col-md-8">
+                                <label for="fin">Fin</label>
+                                <input readonly="readonly" required="required" class="form-control" id="fin" name="fin" aria-describedby="inicioHelp" placeholder="Clic para ingresar valor">
+                                <small id="finHelp" class="form-text text-muted">Fecha fin de busqueda</small>
+                    </div>
+
+			</td>
+
+			<td>
+				<input type="button" id="btnBuscar" class="btn btn-primary" value="Buscar"/>
+			</td>
+			<td></td>
+		</tr>
+		</tbody>
+	</table>
+	</form>
+
+
 <br />
 <br />
 <?php include ("../php/Pie_Pagina.php"); ?>

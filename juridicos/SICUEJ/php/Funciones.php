@@ -16,10 +16,16 @@
 
 function Conectar()
 	{
+
+
+
 		if(!($conexion = mysqli_connect("localhost","root","","sicuej")))
 		   {
 	    	  echo "Error conectando a la base de datos.<br />";
 		   }
+
+
+
 		return $conexion;
 	}
 	$conexion = Conectar();

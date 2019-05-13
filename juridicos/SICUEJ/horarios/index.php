@@ -105,7 +105,7 @@ $results = mysqli_query($conexion,$sql);
 <table width="100%" >
 	<thead>
 		<tr>
-			<th  colspan="4">Establecer horarios <div class="header_01"><hr /></div></th>
+			<th  colspan="4">ESTABLECER HORARIOS<div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 </table>

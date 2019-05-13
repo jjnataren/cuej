@@ -90,7 +90,7 @@ $results = mysqli_query($conexion,$sql);
 <table  width="100%" align="center">
 	<thead>
 		<tr>
-			<th  colspan="4">Registro de horas <div class="header_01"><hr /></div></th>
+			<th  colspan="4"><i class="fa fa-clock"></i> REGISTRO DE HORAS <div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 </table>
@@ -123,18 +123,14 @@ $results = mysqli_query($conexion,$sql);
 		<tbody>
 
 			<tr>
-				<td colspan="3">
-				<small  class="form-text text-muted">Se deben registrar los horarios en el orden indicado</small>
-
-				</td>
-			</tr>
-
-			<tr>
 				<td colspan="3" align="right"">
 				<h3> Fecha actual: <?php echo date('d/m/Y H:i');?></h3>
+				<small  class="form-text text-muted">Se deben registrar los horarios en el orden indicado</small>
+
 
 				</td>
 			</tr>
+
 
 			<?php
 
@@ -163,7 +159,8 @@ $results = mysqli_query($conexion,$sql);
 
 			<tr>
 
-				<td><?php echo $row["orden"] .". ".  $row["nombre"] . " (" .$row["horario"] ." )";?></td>
+				<td><i class="fas fa-stopwatch"></i>
+				 <?php echo $row["orden"] .". ".  $row["nombre"] . " (" .$row["horario"] ." )";?></td>
 				<td>
 
 					<?php if (!$rowEmpleado && !$flagCurrent): ?>
@@ -195,7 +192,7 @@ $results = mysqli_query($conexion,$sql);
 
 						<?php if($date =  strtotime($rowEmpleado['horario'])){
 
-						    $date = date('d/m/Y H:i');
+						    $date = date('d/m/Y H:i', $date);
 
 						}else $date =$rowEmpleado['horario'];  ?>
 
