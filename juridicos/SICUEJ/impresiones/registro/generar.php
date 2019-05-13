@@ -16,7 +16,7 @@
 
 include ("../../php/Funciones.php");
 include("../mpdf/mpdf.php");
-
+session_start();
 
 $id_usuario =  $_SESSION["id_Usuario"];
 
@@ -50,7 +50,18 @@ mysqli_query($conexion, "SET NAMES 'utf8'");
 
 $results = mysqli_query($conexion,$sql);
 
+$fechaHoy = date('Y-m-d H:i');
 
+$sql = "INSERT INTO reporte (usuario, tipo, fecha, estatus) VALUES ($id_usuario,1,'$fechaHoy',1);";
+
+if ($conexion->query($sql) === TRUE) {
+    $last_id = $conexion->insert_id;
+    $message =  "New record created successfully. Last inserted ID is: " . $last_id;
+} else {
+    $message =   "Error: " . $sql . "<br>" . $conexion->error;
+}
+
+$folio = substr('000' . $last_id ,-3);
 
 $mpdf=new mPDF('c');
 
@@ -68,7 +79,7 @@ $html_generales = '
             <td align="center"  valign="middle"  style="border: solid 1px #909798; " width="15%">
 				<label>FOLIO</label>
                 <br />
-				<label>No. 001</label>
+				<label>No. '.$folio.'</label>
 			</td>
 		</tr>
 
@@ -265,6 +276,10 @@ $mpdf->setHTMLFooter($footer);
 $mpdf->AddPage('P','','','','',15,15,10,15,18,12);
 $mpdf->WriteHTML($html_generales);
 $mpdf->Output();
+
+//$pdffilecontent = $mpdf->Output('', 'S');
+
+
 exit;
 
 
@@ -273,38 +288,5 @@ exit;
 
 
 
-
-<table align="center"  width="100%">
-
-		<thead>
-
-			<tr>
-				<th style="align-items: border: thin; padding-right 0; : solid;">NOMBRE DE LA</th>
-				<th style="border: thin;">PERSONA QUE</th>
-				<th style="border: thin;" colspan="2">FECHA DE TERMINO</th>
-				<th >ESTATUS DE</th>
-			</tr>
-			<tr>
-				<th>ACTIVIDAD</th>
-				<th>SOLICITA</th>
-				<th>AVANCE  -</th>
-				<th>FINAL</th>
-				<th>LA ENTREGA</th>
-			</tr>
-		</thead>
-		<tbody>
-		<tr>
-			<td>Mostrar evidencias</td>
-			<td>Jesus Nataren</td>
-			<td>12/12/2019</td>
-			<td>14/12/2019</td>
-			<td>Terminado</td>
-
-		</tr>
-
-
-		</tbody>
-
-	</table>
 
 
