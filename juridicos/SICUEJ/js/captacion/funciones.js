@@ -11,6 +11,9 @@
 // Fecha de Actualización: Mayo, 26 2016
 // ----------------------------------------------
 
+
+
+
 function eliminar(id)
 {
     if(confirm("Confirmar eliminar este proceso de captación"))
@@ -275,6 +278,34 @@ function Captacion_Datos(id)
 }
 
 //----------------------------------------------
+//Función: Ver plantilla de correo
+//Parámetros: id
+//Return: Datos del proceso de captacion
+//Archivo Origen: captacion.php
+//Autor: Jesus Nataren
+//Fecha de Actualización: Mayo, 19 2016
+//----------------------------------------------
+
+function verPlantilla(id)
+{
+	$.ajax({
+	  url: '/SICUEJ/ajax/captacion/verPlantilla.php',
+	  data: "id="+id,
+	  type: "POST",
+	  success: function(respuesta){
+
+		$('#divPlantilla').html(respuesta);
+
+
+
+
+	  }
+	});
+}
+
+
+
+//----------------------------------------------
 //Función: contactar clientes
 //Parámetros: clientes
 //Return: Datos del proceso de captacion
@@ -296,27 +327,56 @@ function contactar(clientes){
 
 			CKEDITOR.replace('bodyText');
 
+			$('#plantilla').on('change', function() {
+
+				var selectedValue =  this.value ;
+
+					if(selectedValue > 0){
 
 
-			//Sólo letras
-			$('.Solo_Letras').keypress(function(tecla){
-				  if(tecla.charCode >= 48 && tecla.charCode <= 57) return false;
-			});
 
-			//Solo Números
-			$('.Solo_Numeros').keypress(function(tecla){
-				  if(tecla.charCode < 48 || tecla.charCode > 57) return false;
-			});
+						$('#divPlantilla').html('Cargando ...');
 
-			$('#btnEnviar').click(function(){
 
-			//	document.getElementById('editor').value = editor.getData();
-				for ( instance in CKEDITOR.instances )
-				    CKEDITOR.instances[instance].updateElement();
+						$('#divVer').html('<a href="javascript:verPlantilla('+selectedValue+')" taskid="'+selectedValue+'" class="btn" data-toggle="modal" data-target="#exampleModal"  >Ver</a>');
 
-				console.log("Error we");
-				enviar();
-			});
+
+						verPlantilla(selectedValue );
+
+
+					}else
+						$('#divVer').html('');
+
+
+				});
+
+
+
+			$("form").submit(function(e){
+
+				if(	$('select[name=plantilla]').val() > 0){
+
+					//	document.getElementById('editor').value = editor.getData();
+						for ( instance in CKEDITOR.instances )
+						    CKEDITOR.instances[instance].updateElement();
+
+
+						enviar();
+
+				 	}else{
+
+				 		e.preventDefault();
+
+				 		alert("Debe seleccionar una plantilla.");
+
+				 		$('#plantilla').focus();
+				 	}
+
+
+		    });
+
+
+
 
 			$('#btnRegresar').click(function(){
 				 location.reload();

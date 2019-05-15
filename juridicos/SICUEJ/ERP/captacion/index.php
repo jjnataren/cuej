@@ -215,7 +215,7 @@ $results = mysqli_query($conexion,$sql);
 	Últimos procesos de captación
 </h4>
 <hr />
-<div class="table-responsive">
+<div class="table-responsive small">
 	<table id="tbl_captacion" class="table  table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
@@ -228,7 +228,6 @@ $results = mysqli_query($conexion,$sql);
 
 			<th>Correo</th>
 			<th>Tel</th>
-			<th>Social</th>
 			<th>Interes</th>
 			<th>Estado</th>
 
@@ -288,7 +287,7 @@ $results = mysqli_query($conexion,$sql);
 
 				<td><?php echo $row["cliente_correo_electronico"]; ?></td>
 				<td><?php echo $row["cliente_telefono"]; ?></td>
-				<td><?php echo $row["medio_contacto"]; ?></td>
+
 				<td><?php echo $row["carrera"]; ?></td>
 				<td><?php echo $row["estadodesc"]; ?></td>
 
@@ -320,7 +319,7 @@ $results = mysqli_query($conexion,$sql);
 				<div class="form-group col-md-8">
                                 <label for="inicio">Inicio</label>
                                 <input readonly="readonly" required="required" class="form-control" id="inicio" name="inicio" aria-describedby="inicioHelp" placeholder="Clic para Ingresar valor">
-                                <small id="inicioHelp" class="form-text text-muted">Fecha inicio de busqueda</small>
+                                <small id="inicioHelp" class="form-text text-muted">Fecha inicio de búsqueda</small>
                     </div>
 
 			</td>
@@ -328,7 +327,7 @@ $results = mysqli_query($conexion,$sql);
 				<div class="form-group col-md-8">
                                 <label for="fin">Fin</label>
                                 <input readonly="readonly" required="required" class="form-control" id="fin" name="fin" aria-describedby="inicioHelp" placeholder="Clic para ingresar valor">
-                                <small id="finHelp" class="form-text text-muted">Fecha fin de busqueda</small>
+                                <small id="finHelp" class="form-text text-muted">Fecha fin de búsqueda</small>
                     </div>
 
 			</td>

@@ -40,7 +40,28 @@ require '../../lib/PHPMailer/src/SMTP.php';
 
 	$content =  $_POST["bodyText"];
 
-	$tpl = file_get_contents('../../ERP/captacion/tpl/sample.html');
+	$plantilla =  $_POST["plantilla"];
+
+
+	$sql = "SELECT * FROM tbl_plantilla WHERE id =  $plantilla;";
+
+
+
+	mysqli_query($conexion, "SET NAMES 'utf8'");
+	$resultado = mysqli_query($conexion, $sql);
+
+
+
+	if(!mysqli_error($conexion))
+	{
+
+	    $row = @mysqli_fetch_assoc($resultado);
+
+	    $tpl = file_get_contents('../../ERP/captacion/tpl/' . $row["contenido"]);
+
+
+
+	}else 	$tpl = file_get_contents('../../ERP/captacion/tpl/sample.html');
 
 
 	$tpl = str_replace('{{content}}', $content, $tpl);
@@ -60,7 +81,7 @@ require '../../lib/PHPMailer/src/SMTP.php';
 	    $mail->Password = 'Natax621.';
 	    $mail->setFrom('maaahernandezgarcia@gmail.com', 'maaahernandezgarcia@gmail.com');
 	    $mail->addAddress($correos[$key], $correos[$key]);
-	    $mail->Subject = 'SICUEJ Contacto carrera ' . $topicos[$key];
+	    $mail->Subject = 'CUEJ CONTACTO:  ' . $topicos[$key];
 
 	    $tpl = str_replace('{{nombre}}', $nombres[$key], $tpl);
 

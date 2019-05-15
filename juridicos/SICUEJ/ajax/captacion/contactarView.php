@@ -26,6 +26,11 @@
 	$clientes = json_decode($clientes, true);
 
 
+	$sql = "SELECT * FROM tbl_plantilla WHERE estatus = 1;";
+
+    mysqli_query($conexion, "SET NAMES 'utf8'");
+
+	$results = mysqli_query($conexion, $sql);
 
 
 ?>
@@ -40,7 +45,7 @@
 
 			<tr>
 					<td class="cuej" colspan="4">
-    					<table class="table table-hover">
+    					<table class="table table-hover table-bordered">
 
     						<thead>
     							<tr>
@@ -51,7 +56,7 @@
     									Cliente
     								</th>
     								<th>
-    									Interes
+    									Interés
     								</th>
     								<th>
     									correo
@@ -85,8 +90,8 @@
 								</td>
 
 								<td>
-    								<?php echo $value[3];?>
-    								<input value="<?php echo $value[3];?>" name="nombre[]" type="hidden" />
+    								<?php echo $value[4];?>
+    								<input value="<?php echo $value[4];?>" name="nombre[]" type="hidden" />
 								</td>
 
 								<td>
@@ -95,8 +100,8 @@
 								</td>
 
 								<td>
-									<?php echo $value[4];?>
-									<input value="<?php echo $value[4];?>" name="correo[]" type="hidden" />
+									<?php echo $value[5];?>
+									<input value="<?php echo $value[5];?>" name="correo[]" type="hidden" />
 								</td>
 
 								</tr>
@@ -109,6 +114,50 @@
     					</table>
 					</td>
 			</tr>
+
+
+
+
+			<tr>
+
+				<td class="cuej">
+
+					<h4>Plantilla</h4>
+
+			    </td>
+
+                <td class="cuej" colspan="2" align="right">
+
+					<select class="form-control" id="plantilla"  name ="plantilla" aria-describedby="plantillaHelp">
+
+						<option selected>Seleccione</option>
+
+						<?php
+
+            			while ($row = @mysqli_fetch_assoc($results))
+            			{?>
+
+
+						  <option value="<?php echo $row["id"];?>"> <?php echo $row['nombre'];?></option>
+
+						<?php }?>
+
+
+
+					</select>
+
+
+                </td>
+
+                <td>
+					<div id="divVer">
+					<!-- 	<a href="javascript:verAdmin(<?php echo $row['id'];?>)"  class="btn" data-toggle="modal" data-target="#exampleModal" taskid  = "<?php echo $row['id'];?>" ><?php echo $row["id"]; ?></a>  -->
+					</div>
+                </td>
+
+
+			</tr>
+
 
 		<tr>
 				<td class="cuej" colspan="4">
@@ -171,7 +220,28 @@
 		</tfoot>
 	</table>
 	<p align="center">
-		<input class="button" type="submit" value = "Enviar correo"/>
+		<input class="button" type="submit" id="btnEnviar" value = "Enviar correo"/>
 		<input class="button" type="button" id = "btnRegresar" name = "btnRegresar"  value = "Regresar" />
 	</p>
 </form>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Plantilla</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="divPlantilla">
+		Cargando ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

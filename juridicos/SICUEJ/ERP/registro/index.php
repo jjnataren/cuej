@@ -114,7 +114,7 @@ $results = mysqli_query($conexion,$sql);
 	</table>
 <p>&nbsp;</p>
 <div id="divRegistro">
-<div class="table-responsive">
+<div class="table-responsive small">
 	<table id="tbl_registro" class="table table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>

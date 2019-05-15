@@ -204,7 +204,7 @@ $eventos = [];
 	</form>
 <p>&nbsp;</p>
 <div id="divBitacora">
-<div class="table-responsive">
+<div class="table-responsive small">
 
 
 	<table id="tbl_horarios" class="table table-sm" style="width:100%">
