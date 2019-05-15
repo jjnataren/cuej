@@ -92,7 +92,7 @@ $results = mysqli_query($conexion,$sql);
 	</thead>
 	<tbody>
 		<tr>
-			<td  colspan="4">Seleccione un topico para desplegar el contenido</td>
+			<td  colspan="4">Seleccione un tópico para desplegar el contenido</td>
 		</tr>
 	</tbody>
 

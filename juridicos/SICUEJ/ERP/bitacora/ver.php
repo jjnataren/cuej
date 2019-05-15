@@ -161,7 +161,7 @@ $eventos = [];
 				<div class="form-group col-md-8">
                                 <label for="inicio">Inicio</label>
                                 <input readonly="readonly" required="required" class="form-control" id="inicio" name="inicio" aria-describedby="inicioHelp" placeholder="Clic para Ingresar valor">
-                                <small id="inicioHelp" class="form-text text-muted">Fecha inicio de busqueda</small>
+                                <small id="inicioHelp" class="form-text text-muted">Fecha inicio de búsqueda</small>
                     </div>
 
 			</td>
@@ -169,7 +169,7 @@ $eventos = [];
 				<div class="form-group col-md-8">
                                 <label for="fin">Fin</label>
                                 <input readonly="readonly" required="required" class="form-control" id="fin" name="fin" aria-describedby="inicioHelp" placeholder="Clic para ingresar valor">
-                                <small id="finHelp" class="form-text text-muted">Fecha fin de busqueda</small>
+                                <small id="finHelp" class="form-text text-muted">Fecha fin de búsqueda</small>
                     </div>
 
 			</td>

@@ -163,7 +163,7 @@ $results = mysqli_query($conexion,$sql);
 					<div  class="form-group">
     					<label for="horario">* Horario</label>
                         <input readonly="readonly" data-format="hh:mm:ss" value="<?php echo $row["horario"]?>" class="form-control" name="horario[]" id="horario_<?php echo $row["id"]?>" aria-describedby="horarioHelp" placeholder="Ingrese valor" />
-                        <small id="horarioHelp" class="form-text text-muted">*Establesca un horario en formato HH:MM</small>
+                        <small id="horarioHelp" class="form-text text-muted">*Establezca un horario en formato HH:MM</small>
 
                       </div>
 
@@ -175,7 +175,7 @@ $results = mysqli_query($conexion,$sql);
 					<div class="form-group">
     					<label for="tolerancia">* Tolerancia</label>
                         <input  value="<?php echo $row["tolerancia"]?>" class="form-control" name="tolerancia[]" id="tolerancia" aria-describedby="toleranciaHelp" placeholder="Ingrese valor" />
-                        <small id="toleranciaHelp" class="form-text text-muted">*Establesca la tolerancia  en formato de minutos</small>
+                        <small id="toleranciaHelp" class="form-text text-muted">*Establezca la tolerancia  en formato de minutos</small>
                       </div>
 
 				</td>
