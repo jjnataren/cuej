@@ -253,7 +253,7 @@ function Captacion_Datos(id)
 				if($('#correo').val().trim() != "" && $('#correo').val().trim().match(mailformat))
 				{
 
-					insertar();
+					actualizar();
 				}
 				else
 				{

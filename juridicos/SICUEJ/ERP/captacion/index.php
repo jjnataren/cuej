@@ -147,7 +147,7 @@ $sql = "SELECT cap.*,
                                  (Select pa.paisnombre from pais pa where pa.id =  cap.pais limit 1) as paisdesc,
                                     (SELECT edo.estadonombre FROM estado edo where edo.id =  cap.estado limit 1) as estadodesc,
                                        (SELECT CONCAT(nombre,' ',apellido_paterno) FROM usuarios  WHERE  id_usuario = cap.id_empleado limit 1) as nombre_empleado
-                                FROM sicuej.captacion cap  ORDER BY ultima_modificacion desc LIMIT 100;";
+                                FROM captacion cap  ORDER BY ultima_modificacion desc LIMIT 100;";
 mysqli_query($conexion, "SET NAMES 'utf8'");
 
 $results = mysqli_query($conexion,$sql);

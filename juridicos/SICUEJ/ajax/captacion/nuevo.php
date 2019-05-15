@@ -32,7 +32,7 @@
 	$resultsEstado = mysqli_query($conexion,$sql);
 
 
-	$sql = "SELECT * FROM sicuej.carreras order by carrera;";
+	$sql = "SELECT * FROM carreras order by carrera;";
 
 	$resultsCarrera = mysqli_query($conexion,$sql);
 

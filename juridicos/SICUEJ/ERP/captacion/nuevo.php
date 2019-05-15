@@ -53,7 +53,7 @@ include ("../php/HTML.php");
 $sql = "SELECT cap.*,
                     (Select car.carrera from carreras car
                             where car.id_carrera =  cap.id_topico_interes limit 1) as carrera
-                                FROM sicuej.captacion cap where id_empleado = $id_usuario;";
+                                FROM captacion cap where id_empleado = $id_usuario;";
 
 $results = mysqli_query($conexion,$sql);
 

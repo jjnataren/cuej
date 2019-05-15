@@ -38,7 +38,7 @@
                             where car.id_carrera =  cap.id_topico_interes limit 1) as carrera,
                                  (Select pa.paisnombre from pais pa where pa.id =  cap.pais limit 1) as paisdesc,
                                     (SELECT edo.estadonombre FROM estado edo where edo.id =  cap.estado limit 1) as estadodesc
-                                FROM sicuej.captacion cap where id_empleado = $id_usuario AND  CAST(captacion_fecha_alta AS DATE) between CAST( '$inicio' AS DATE) AND CAST( '$fin' AS DATE) ; ";
+                                FROM captacion cap where id_empleado = $id_usuario AND  CAST(captacion_fecha_alta AS DATE) between CAST( '$inicio' AS DATE) AND CAST( '$fin' AS DATE) ; ";
 	mysqli_query($conexion, "SET NAMES 'utf8'");
 
 	$results = mysqli_query($conexion,$sql);
