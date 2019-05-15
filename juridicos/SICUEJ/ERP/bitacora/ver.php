@@ -151,7 +151,7 @@ $eventos = [];
 <table  width="100%" align="center">
 	<thead>
 		<tr>
-			<th  colspan="4">Historial de horarios <div class="header_01"><hr /></div></th>
+			<th  colspan="4"><i class="fa fa-hourglass-3"></i> Historial de horarios <div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 

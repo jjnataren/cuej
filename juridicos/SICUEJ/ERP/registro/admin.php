@@ -140,7 +140,7 @@ $results = mysqli_query($conexion,$sql);
 <table  style="width: 100%; align-content: center;">
 	<thead>
 		<tr>
-			<th  colspan="4">Revisar actividades empleados <div class="header_01"><hr /></div></th>
+			<th  colspan="4"><i class="fa fa-eye"></i> Revisar actividades empleados <div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 </table>
@@ -166,7 +166,7 @@ $results = mysqli_query($conexion,$sql);
 			</td>
 
 			<td>
-				<input type="button" id="btnBuscar" class="btn btn-primary" value="Buscar"/>
+				<input type="button" id="btnBuscar" class="button" value="Buscar"/>
 			</td>
 			<td></td>
 		</tr>

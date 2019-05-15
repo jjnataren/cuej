@@ -69,7 +69,7 @@
                         <option value="1">Preparatoria</option>
                         <option value="2">Licenciatura</option>
                         <option value="3">Posgrado</option>
-                        <option value="4">Maestria</option>
+                        <option value="4">Maestría</option>
                         <option value="5">Doctorado</option>
                       </select>
                       <small id="gradoHelp" class="form-text text-muted">Último grado</small>
@@ -80,7 +80,7 @@
 				<div class="form-group">
                                 <label for="telefono">Teléfono de contacto</label>
                                 <input  class="form-control" name="telefono" id="telefono" aria-describedby="telefonoHelp" placeholder="Ingrese valor">
-                                <small id="telefonoHelp" class="form-text text-muted">* Telefono del cliente para contacto</small>
+                                <small id="telefonoHelp" class="form-text text-muted">* Teléfono del cliente para contacto</small>
                     </div>
                 </td>
 
@@ -89,9 +89,9 @@
 			<tr>
 				<td class="cuej">
 					<div class="form-group">
-    					<label for="correo">* Correo Electronico</label>
+    					<label for="correo">* Correo Electrónico</label>
                         <input type="email" class="form-control" name="correo" id="correo" aria-describedby="correoHelp" placeholder="Ingrese valor">
-                        <small id="correoHelp" class="form-text text-muted">*Ingrese un correo electronico valido</small>
+                        <small id="correoHelp" class="form-text text-muted">*Ingrese un correo electrónico valido</small>
                       </div>
 				</td>
 				<td class="cuej">
@@ -193,7 +193,7 @@
 				<td class="cuej" colspan="2">
 
 				<div class="form-group">
-                      <label  for="topico">* Topico de interes</label>
+                      <label  for="topico">* Tópico de interes</label>
                       <select class="form-control" id="topico"  name ="topico" aria-describedby="topicoHelp">
 
 

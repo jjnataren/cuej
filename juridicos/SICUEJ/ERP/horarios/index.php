@@ -4,13 +4,13 @@
 	-- ==============================================================================
 	-- Empresa: Centro Univeristario de Estudios Jurídicos
 	-- Proyecto: Sistema Integral - Administrativo
-	-- Autor:  Nancy Flores Torrecilla
-	-- Responsable: Nancy Flores Torrecilla
-	-- Fecha de Creación: [Mayo, 19 2016]
+	-- Autor:  Jesus Nataren
+	-- Responsable: Jesus Nataren
+	-- Fecha de Creación: [Mayo, 19 2019]
 	-- País: México
 	-- Objetivo: Administración de Alumnos
-	-- Última Modificación: [Mayo, 19 2016]
-	-- Realizó: Nancy Flores Torrecilla
+	-- Última Modificación: [Mayo, 19 2019]
+	-- Realizó: Jesus Nataren
 	-- Observaciones: Creación de Archivo
 	-- ===============================================================================
 */
@@ -105,7 +105,7 @@ $results = mysqli_query($conexion,$sql);
 <table width="100%" >
 	<thead>
 		<tr>
-			<th  colspan="4">ESTABLECER HORARIOS<div class="header_01"><hr /></div></th>
+			<th  colspan="4"><i class="fa fa-clock"></i> ESTABLECER HORARIOS<div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 </table>

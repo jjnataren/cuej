@@ -47,6 +47,7 @@
 
 	    $sql = "UPDATE registro_actividad SET  nombre= '$nombre', persona= '$persona', estatus= $estatus, avance= '$avance', final='$final' , descripcion = '$descripcion' , modificacion = '$modificacion' WHERE id = $id;";
 
+	    mysqli_query($conexion, "SET NAMES 'utf8'");
 
 	    $resultado = mysqli_query($conexion, $sql);
 
@@ -58,5 +59,5 @@
 	    }
 
 
-	    echo "¡Horarios actualizados correctamente!";
+	    echo "¡Actividad actualizada correctamente!";
 ?>

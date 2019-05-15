@@ -4,13 +4,13 @@
 	-- ==============================================================================
 	-- Empresa: Centro Univeristario de Estudios Jurídicos
 	-- Proyecto: Sistema Integral - Administrativo
-	-- Autor:  Nancy Flores Torrecilla
-	-- Responsable: Nancy Flores Torrecilla
-	-- Fecha de Creación: [Mayo, 19 2016]
+	-- Autor:  Jesus Nataren
+	-- Responsable: Jesus Nataren
+	-- Fecha de Creación: [Mayo, 19 2019]
 	-- País: México
 	-- Objetivo: Administración de Alumnos
-	-- Última Modificación: [Mayo, 19 2016]
-	-- Realizó: Nancy Flores Torrecilla
+	-- Última Modificación: [Mayo, 19 2019]
+	-- Realizó: Jesus Nataren
 	-- Observaciones: Creación de Archivo
 	-- ===============================================================================
 */
@@ -145,8 +145,9 @@ $sql = "SELECT cap.*,
                     (Select car.carrera from carreras car
                             where car.id_carrera =  cap.id_topico_interes limit 1) as carrera,
                                  (Select pa.paisnombre from pais pa where pa.id =  cap.pais limit 1) as paisdesc,
-                                    (SELECT edo.estadonombre FROM estado edo where edo.id =  cap.estado limit 1) as estadodesc
-                                FROM sicuej.captacion cap where id_empleado = $id_usuario ORDER BY captacion_fecha_alta DESC";
+                                    (SELECT edo.estadonombre FROM estado edo where edo.id =  cap.estado limit 1) as estadodesc,
+                                       (SELECT CONCAT(nombre,' ',apellido_paterno) FROM usuarios  WHERE  id_usuario = cap.id_empleado limit 1) as nombre_empleado
+                                FROM sicuej.captacion cap  ORDER BY ultima_modificacion desc LIMIT 100;";
 mysqli_query($conexion, "SET NAMES 'utf8'");
 
 $results = mysqli_query($conexion,$sql);
@@ -182,7 +183,7 @@ $results = mysqli_query($conexion,$sql);
 <table style="width: 100%;" align="center">
 	<thead>
 		<tr>
-			<th  colspan="4">PROCESO DE CAPTACIÓN<div class="header_01"><hr /></div></th>
+			<th  colspan="4"><i class="fa fa-envelope"></i> PROCESO DE CAPTACIÓN<div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 </table>
@@ -220,6 +221,8 @@ $results = mysqli_query($conexion,$sql);
 		<tr>
 			<th>Id</th>
 			<th>Alta</th>
+			<th>Empleado</th>
+
 			<th>Estatus</th>
 			<th>Cliente</th>
 
@@ -268,7 +271,12 @@ $results = mysqli_query($conexion,$sql);
 				<td><?php echo
 
 
-				date('d/m/Y h:i' , strtotime($row["captacion_fecha_alta"]) ); ?></td>
+				date('d/m/Y h:i' , strtotime($row["captacion_fecha_alta"]) ); ?>
+				</td>
+
+				<td><?php echo
+				  $row["nombre_empleado"]; ?>
+				</td>
 
 
 				<td>
@@ -326,7 +334,7 @@ $results = mysqli_query($conexion,$sql);
 			</td>
 
 			<td>
-				<input type="button" id="btnBuscar" class="btn btn-primary" value="Buscar"/>
+				<input type="button" id="btnBuscar" class="button" value="Buscar"/>
 			</td>
 			<td></td>
 		</tr>

@@ -251,7 +251,7 @@ $results = mysqli_query($conexion,$sql);
 <table  style="width: 100%; align-content: center;">
 	<thead>
 		<tr>
-			<th  colspan="3">Generar reporte de actividades semanales <div class="header_01"><hr /></div></th>
+			<th  colspan="3"><i class="fa fa-file-pdf-o"></i> Generar reporte de actividades semanales <div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -336,8 +336,8 @@ $results = mysqli_query($conexion,$sql);
 				</div>
 			</td>
 			<td>
-				<input type="button" id="btnBuscar" class="btn btn-info" value="Buscar"/>
-				<input type="button" id="btnGenerar" class="btn btn-info"  value="Generar" />
+				<input type="button" id="btnBuscar" class="button" value="Buscar"/>
+				<input type="button" id="btnGenerar" class="button"  value="Generar" />
 
 			</td>
 			<td>

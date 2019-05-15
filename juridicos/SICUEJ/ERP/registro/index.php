@@ -91,7 +91,7 @@ $results = mysqli_query($conexion,$sql);
 <table  width="100%" align="center">
 	<thead>
 		<tr>
-			<th  colspan="4">Registro de actividades <div class="header_01"><hr /></div></th>
+			<th  colspan="4"><i class="fa fa-fax"></i> Registro de actividades <div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 </table>
