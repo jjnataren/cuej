@@ -19,11 +19,14 @@
 
 	$id= $_POST["id"];
 
-	$sql = "SELECT * FROM FILES WHERE id_carrera = $id";
+	$sql = "SELECT * FROM files WHERE id_carrera = $id";
 
 	mysqli_query($conexion, "SET NAMES 'utf8'");
 
+
 	$results = mysqli_query($conexion,$sql);
+
+
 
 	$sql = "SELECT * FROM carreras WHERE id_carrera = $id;";
 
