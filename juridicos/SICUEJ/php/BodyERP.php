@@ -22,7 +22,7 @@
 	$resultado_menus = mysqli_query($conexion,$sql_menus);
 	$registros_menus = @mysqli_num_rows($resultado_menus);
 ?>
-        							<ul id="navmenu">
+        							<ul id="navmenu" style="z-index:10; position: relative;">
 
 
 

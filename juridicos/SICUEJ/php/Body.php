@@ -22,19 +22,9 @@
 	$resultado_menus = mysqli_query($conexion,$sql_menus);
 	$registros_menus = @mysqli_num_rows($resultado_menus);
 ?>
-        							<ul id="navmenu">
+        							<ul id="navmenu" style="z-index:10; position: relative;">
 
-        							<li>
-        								         	<a href="#">Captiación</a>
-        								<ul>
-            								<li>
-                                        			<a href="#">Nuevo</a>
-    										</li>
-    										<li>
-                                        			<a href="#">Consultar</a>
-    										</li>
-                                    	</ul>
-                                    </li>
+
 
 <?php
 	while($fila_menus = mysqli_fetch_array($resultado_menus))

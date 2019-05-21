@@ -81,7 +81,6 @@ $results = mysqli_query($conexion,$sql);
 
 
 
-
 ?>
 
 <table  width="100%" align="center">

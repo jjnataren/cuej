@@ -155,30 +155,7 @@ $results = mysqli_query($conexion,$sql);
 ?>
 
 
-<?php if (isset($_SESSION["MAIL_ERRORS"])):?>
 
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Error: </strong> <?php echo $_SESSION["MAIL_ERRORS"];?>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-
-<?php unset( $_SESSION["MAIL_ERRORS"]);?>
-
-<?php elseif(isset($_SESSION["MAIL_OK"])):?>
-
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Correcto: </strong> <?php echo $_SESSION["MAIL_OK"];?>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-
-
-<?php unset( $_SESSION["MAIL_OK"]);?>
-
-<?php endif;?>
 
 <table style="width: 100%;" align="center">
 	<thead>
@@ -211,11 +188,39 @@ $results = mysqli_query($conexion,$sql);
 
 <div id="div_captacion">
 
+
 <h4>
 	Últimos procesos de captación
 </h4>
 <hr />
 <div class="table-responsive small">
+
+<?php if (isset($_SESSION["MAIL_ERRORS"])):?>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Error: </strong> <?php echo $_SESSION["MAIL_ERRORS"];?>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<?php unset( $_SESSION["MAIL_ERRORS"]);?>
+
+<?php elseif(isset($_SESSION["MAIL_OK"])):?>
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Correcto: </strong> <?php echo $_SESSION["MAIL_OK"];?>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<?php unset( $_SESSION["MAIL_OK"]);?>
+
+<?php endif;?>
+
+
 	<table id="tbl_captacion" class="table  table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
