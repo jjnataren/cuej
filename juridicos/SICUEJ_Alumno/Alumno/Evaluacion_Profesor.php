@@ -23,6 +23,9 @@ if(!(isset($_SESSION["Autenticado"])))
 
 
 include ("../php/HTML.php");
+
+$pendientes = isset($_REQUEST["pendientes"])? $_REQUEST["pendientes"] : 0 ;
+
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script language="javascript" src="../js/Funciones_Jquery_Alumno.js"></script>
@@ -31,8 +34,8 @@ include ("../php/HTML.php");
 function Contar_Texto(Campo, Contador, Limite_Maximo)
 	{
 		if (Campo.value.length > Limite_Maximo)
-			Campo.value = Campo.value.substring(0, Limite_Maximo); 
-		else 
+			Campo.value = Campo.value.substring(0, Limite_Maximo);
+		else
 			Contador.value = Limite_Maximo - Campo.value.length;
 	}
 
@@ -42,7 +45,7 @@ function Validar_Guardar()
 			{
 				opciones = document.getElementsByName("Respuesta_"+pregunta);
 				var seleccionado = false;
-				
+
 				for(var i=0; i<opciones.length; i++)
 					{
 					  if(opciones[i].checked)
@@ -51,22 +54,22 @@ function Validar_Guardar()
 							break;
 						}
 					}
-				 
+
 				if(!seleccionado) {
 					alert ("Debes contestar la pregunta "+pregunta);
 					if (pregunta%2 == 0)
 						$('#Renglon_'+pregunta).removeClass('odd');
-											
-					$('#Renglon_'+pregunta).addClass('pregunta');					
+
+					$('#Renglon_'+pregunta).addClass('pregunta');
 					return false;
 				}else{
 					$('#Renglon_'+pregunta).removeClass('pregunta');
-					
+
 					if (pregunta%2 == 0)
-						$('#Renglon_'+pregunta).addClass('odd');					
+						$('#Renglon_'+pregunta).addClass('odd');
 				}
 			}
-		
+
 		Evaluacion_Profesor_Guardar();
 	}
 
@@ -74,6 +77,19 @@ function Actualizar()
 	{
 		setTimeout("document.location.href='Evaluacion_Profesor.php';",100);
 	}
+
+
+$('Body').ready(function(){
+
+
+
+	if ($('#hidPendientes').val() > 0 ){
+
+		alert( '¡Para poder consultar tus calificaciones debes completar las ' +	$('#hidPendientes').val() + ' evaluaciones pendientes!');
+
+	}
+
+});
 
 </script>
 
@@ -89,12 +105,12 @@ $resultado_alumnos = mysqli_query($conexion,$sql_alumnos);
 if ($registros_alumnos > 0)
 	{
 		$fila_alumnos = mysqli_fetch_array($resultado_alumnos);
-		
+
 		$sql_grupo = "SELECT DISTINCT id_grupo FROM alumnos_evaluaciones JOIN grupos USING (id_grupo) JOIN ciclos_escolares USING (id_ciclo_escolar) WHERE id_alumno_programa = '".$_SESSION["id_Alumno_Programa"]."' ORDER BY ciclo_escolar DESC;";
 		$resultado_grupo = mysqli_query($conexion,$sql_grupo);
-		
+
 		$fila_grupo = mysqli_fetch_array($resultado_grupo);
-		
+
 		//echo $sql_grupo."<br>";
 ?>
 
@@ -120,13 +136,13 @@ if ($registros_alumnos > 0)
   </thead>
   <tbody>
     <tr>
-      <td class="cuej"><label>Nombre <span id="lbl_Nombre"></span></label></td>			
+      <td class="cuej"><label>Nombre <span id="lbl_Nombre"></span></label></td>
       <td class="cuej"><label>Apellido Paterno<span id="lbl_Apellido_Paterno"></span></label></td>
       <td class="cuej"><label>Apellido Materno <span id="lbl_Apellido_Materno"></span></label></td>
       <td class="cuej"><label>Cuenta <span id="lbl_Cuenta"></span></label></td>
     </tr>
     <tr>
-      <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["nombre"]); ?></span></td>			
+      <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["nombre"]); ?></span></td>
       <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["apellido_paterno"]); ?></span></td>
       <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["apellido_materno"]); ?></span></td>
       <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["cuenta"]); ?></span></td>
@@ -143,7 +159,7 @@ if ($registros_alumnos > 0)
 
 <div id="Evaluacion">
 <table width="100%" class="cuej" align="center">
-	<thead>      
+	<thead>
       <tr>
         <th class="cuej" align="center">Asignatura</th>
         <th class="cuej" align="center">Grupo</th>
@@ -156,19 +172,19 @@ if ($registros_alumnos > 0)
 <?php
 		$sql_alumnos_evaluaciones = "SELECT id_materia, evaluacion_profesor, grupo, materia, clave_materia, materias.semestre FROM alumnos_evaluaciones JOIN grupos USING (id_grupo) JOIN materias USING (id_materia) WHERE id_alumno_programa = '".$_SESSION["id_Alumno_Programa"]."' AND id_grupo = '".$fila_grupo["id_grupo"]."' ORDER BY clave_materia;";
 		$resultado_alumnos_evaluaciones = mysqli_query($conexion,$sql_alumnos_evaluaciones);
-		
+
 		//echo $sql_alumnos_evaluaciones."<br>";
-		
+
 		while($fila_alumnos_evaluaciones = mysqli_fetch_array($resultado_alumnos_evaluaciones))
 			{
 				$sql_profesor = "SELECT id_horario, id_profesor, apellido_paterno, apellido_materno, nombre, titulo FROM horarios JOIN profesores USING (id_profesor) WHERE id_grupo = '".$fila_grupo["id_grupo"]."' AND id_materia = '".$fila_alumnos_evaluaciones["id_materia"]."';";
 				$resultado_profesor = mysqli_query($conexion,$sql_profesor);
 				$fila_profesor = mysqli_fetch_array($resultado_profesor);
-				
+
 				//echo $sql_profesor."<br>";
-				
+
 				$i++;
-				
+
 				if ($i%2 == 0) $fondo = "#EFF5FB";
 				else $fondo = "#FFFFFF";
 ?>
@@ -202,6 +218,7 @@ if ($registros_alumnos > 0)
 </table>
 </div>
 <br />
+<input type="hidden" id="hidPendientes" value="<?php echo $pendientes; ?>" />
 </form>
 <?php
 	}

@@ -22,6 +22,27 @@ if(!(isset($_SESSION["Autenticado"])))
 }
 
 include ("../php/HTML.php");
+
+$idAlumno = $_SESSION["id_Alumno_Programa"];
+
+$sql = "SELECT DISTINCT id_grupo FROM alumnos_evaluaciones JOIN grupos USING (id_grupo) JOIN ciclos_escolares USING (id_ciclo_escolar) WHERE id_alumno_programa = '$idAlumno' ORDER BY ciclo_escolar DESC;";
+$result = mysqli_query($conexion,$sql);
+$row = mysqli_fetch_array($result);
+
+$grupo = $row["id_grupo"];
+
+$sql = "SELECT  COUNT(evaluacion_profesor) as evaluacion FROM alumnos_evaluaciones JOIN grupos USING (id_grupo) JOIN materias USING (id_materia) WHERE id_alumno_programa = '$idAlumno' AND id_grupo = '$grupo' and evaluacion_profesor = '0000-00-00'  ORDER BY clave_materia;";
+$result = mysqli_query($conexion,$sql);
+$row = mysqli_fetch_array($result);
+
+$pendientes = $row["evaluacion"];
+
+if ($pendientes > 0){
+
+    header("Location: /SICUEJ_Alumno/Alumno/Evaluacion_Profesor.php?pendientes=$pendientes");
+}
+
+
 ?>
 <script language="javascript" src="../js/Funciones_Jquery_Alumno.js"></script>
 <script language="javascript">
@@ -67,14 +88,14 @@ $fila_promedio = @mysqli_fetch_array($resultado_promedio);
   </thead>
   <tbody>
     <tr>
-      <td class="cuej"><label>Nombre <span id="lbl_Nombre"></span></label></td>			
+      <td class="cuej"><label>Nombre <span id="lbl_Nombre"></span></label></td>
       <td class="cuej"><label>Apellido Paterno<span id="lbl_Apellido_Paterno"></span></label></td>
       <td class="cuej"><label>Apellido Materno <span id="lbl_Apellido_Materno"></span></label></td>
       <td class="cuej"><label>Cuenta <span id="lbl_Cuenta"></span></label></td>
       <td class="cuej"><label>Promedio <span id="lbl_Promedio"></span></label></td>
     </tr>
     <tr>
-      <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["nombre"]); ?></span></td>			
+      <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["nombre"]); ?></span></td>
       <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["apellido_paterno"]); ?></span></td>
       <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["apellido_materno"]); ?></span></td>
       <td class="cuej"><span class="dato"><?php echo utf8_encode($fila_alumnos["cuenta"]); ?></span></td>
@@ -89,7 +110,7 @@ $fila_promedio = @mysqli_fetch_array($resultado_promedio);
 </table>
 
 <p>&nbsp;</p>
-	
+
 <table align="center" width="100%" class="cuej">
   <thead>
     <tr>
@@ -108,7 +129,7 @@ $fila_promedio = @mysqli_fetch_array($resultado_promedio);
   <tbody>
 <?php
 	for($semestre = 1; $semestre <= $fila_programa["duracion"]; $semestre++)
-	{	
+	{
 		$sql_historial = "SELECT * FROM alumnos_historial JOIN materias USING (id_materia) WHERE id_alumno_programa = '".$_SESSION["id_Alumno_Programa"]."' AND semestre = '".$semestre."' ORDER BY semestre, clave_materia;";
 		$resultado_historial = mysqli_query($conexion, $sql_historial);
 ?>
@@ -121,21 +142,21 @@ $fila_promedio = @mysqli_fetch_array($resultado_promedio);
 			$sql_ciclo_escolar = "SELECT ciclo_escolar FROM ciclos_escolares WHERE id_ciclo_escolar = '".$fila_historial["id_ciclo_escolar"]."';";
 			$resultado_ciclo_escolar = mysqli_query($conexion, $sql_ciclo_escolar);
 			$fila_ciclo_escolar = @mysqli_fetch_array($resultado_ciclo_escolar);
-			
+
 			if($fila_historial["tipo"] == 0)
-				$tipo = ""; 
+				$tipo = "";
 			else if($fila_historial["tipo"] == 1)
-				$tipo = "ORD"; 
+				$tipo = "ORD";
 			else if($fila_historial["tipo"] == 2)
 				$tipo = "EXT";
-				
-			if($fila_historial["equivalencia"] == 0) 
-				$equivalencia = ""; 
+
+			if($fila_historial["equivalencia"] == 0)
+				$equivalencia = "";
 			else if($fila_historial["equivalencia"] == 1)
-				$equivalencia = "NO"; 
+				$equivalencia = "NO";
 			else if($fila_historial["equivalencia"] == 2)
 				$equivalencia = "NO";
-				
+
 			$i++;
 			if ($i%2 == 0) $fondo = "#EFF5FB";
 			else $fondo = "#FFFFFF";
@@ -149,8 +170,8 @@ $fila_promedio = @mysqli_fetch_array($resultado_promedio);
       <td class="cuej" align="center"><?php echo $fila_ciclo_escolar["ciclo_escolar"]; ?></td>
       <td class="cuej" align="center"><?php echo $equivalencia; ?></td>
     </tr>
-<?php		
-		}			
+<?php
+		}
 	}
 ?>
     <tr>

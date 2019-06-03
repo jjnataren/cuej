@@ -38,7 +38,7 @@ require '../../lib/PHPMailer/src/SMTP.php';
 
 	$errors = "";
 
-	$content =  $_POST["bodyText"];
+	$content = utf8_encode( $_POST["bodyText"] );
 
 	$plantilla =  $_POST["plantilla"];
 
@@ -57,11 +57,11 @@ require '../../lib/PHPMailer/src/SMTP.php';
 
 	    $row = @mysqli_fetch_assoc($resultado);
 
-	    $tpl = file_get_contents('../../ERP/captacion/tpl/' . $row["contenido"]);
+	    $tpl =  file_get_contents('../../ERP/captacion/tpl/' . $row["contenido"]) ;
 
 
 
-	}else 	$tpl = file_get_contents('../../ERP/captacion/tpl/sample.html');
+	}else 	$tpl =  file_get_contents('../../ERP/captacion/tpl/sample.html') ;
 
 
 	$tpl = str_replace('{{content}}', $content, $tpl);
@@ -82,6 +82,7 @@ require '../../lib/PHPMailer/src/SMTP.php';
 	    $mail->setFrom('maaahernandezgarcia@gmail.com', 'maaahernandezgarcia@gmail.com');
 	    $mail->addAddress($correos[$key], $correos[$key]);
 	    $mail->Subject = 'CUEJ CONTACTO:  ' . $topicos[$key];
+	    $mail->CharSet = 'UTF-8';
 
 	    $tpl = str_replace('{{nombre}}', $nombres[$key], $tpl);
 
