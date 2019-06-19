@@ -48,8 +48,17 @@
 	           $birthDate."', $topico, '".$comentarios."','".$fechaCaptura."', $id_usuario, $estatus,'".$fechaCaptura."',$grado);";
 
 	 mysqli_query($conexion, "SET NAMES 'utf8'");
-	$resultado = mysqli_query($conexion, $sql);
+	//$resultado = mysqli_query($conexion, $sql);
 
+	if ($conexion->query($sql) === TRUE) {
+	    $last_id = $conexion->insert_id;
+	    echo $last_id;
+	} else {
+	    Logs_Errores($conexion->error, $sql, $_SESSION["id_Usuario"]);
+	    echo  "Error: <br>" . $conexion->error;
+	}
+
+/*
 	if(!mysqli_error($conexion))
 	{
 
@@ -59,5 +68,5 @@
 	{
 		Logs_Errores(mysqli_error($conexion), $sql, $_SESSION["id_Usuario"]);
 		echo "Error al Registrar...";
-	}
+	}*/
 ?>

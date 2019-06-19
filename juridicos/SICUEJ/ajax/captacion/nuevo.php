@@ -51,14 +51,14 @@
 					<div class="form-group">
                                 <label for="nombre">* Nombre cliente</label>
                                 <input  class="form-control" id="nombre" name="nombre" aria-describedby="nombreHelp" placeholder="Ingrese valor">
-                                <small id="nombreHelp" class="form-text text-muted">* Nombre completo del cliente</small>
+                                <!-- <small id="nombreHelp" class="form-text text-muted">* Nombre completo del cliente</small>  -->
                     </div>
 				</td>
 				<td class="cuej">
 					<div class="form-group col-md-8">
                                 <label for="edad">Edad</label>
                                 <input  class="form-control" id="edad" name="edad" aria-describedby="edadHelp" placeholder="Ingrese valor">
-                                <small id="edadHelp" class="form-text text-muted">Edad del cliente</small>
+                              <!--   <small id="edadHelp" class="form-text text-muted">Edad del cliente</small>  -->
                     </div>
 				</td>
 				<td class="cuej">
@@ -68,19 +68,19 @@
                         <option selected>Seleccione</option>
                         <option value="1">Preparatoria</option>
                         <option value="2">Licenciatura</option>
-                        <option value="3">Posgrado</option>
+                        <option value="3">Especialidad</option>
                         <option value="4">Maestría</option>
                         <option value="5">Doctorado</option>
                       </select>
-                      <small id="gradoHelp" class="form-text text-muted">Último grado</small>
+                      <!-- <small id="gradoHelp" class="form-text text-muted">Último grado</small>-->
 
                     </div>
 				</td>
 				<td class="cuej">
 				<div class="form-group">
-                                <label for="telefono">Teléfono de contacto</label>
+                                <label for="telefono">Número Telefónico</label>
                                 <input  class="form-control" name="telefono" id="telefono" aria-describedby="telefonoHelp" placeholder="Ingrese valor">
-                                <small id="telefonoHelp" class="form-text text-muted">* Teléfono del cliente para contacto</small>
+                               <!--  <small id="telefonoHelp" class="form-text text-muted">* Teléfono del cliente para contacto</small> -->
                     </div>
                 </td>
 
@@ -91,7 +91,7 @@
 					<div class="form-group">
     					<label for="correo">* Correo Electrónico</label>
                         <input type="email" class="form-control" name="correo" id="correo" aria-describedby="correoHelp" placeholder="Ingrese valor">
-                        <small id="correoHelp" class="form-text text-muted">*Ingrese un correo electrónico valido</small>
+                       <!--  <small id="correoHelp" class="form-text text-muted">*Ingrese un correo electrónico valido</small> -->
                       </div>
 				</td>
 				<td class="cuej">
@@ -99,11 +99,14 @@
                       <label  for="medio">Tipo de medio social</label>
                       <select class="form-control" id="medio" name ="medio" aria-describedby="medioHelp">
                         <option selected>Seleccione</option>
-                        <option value="1">Face book</option>
-                        <option value="2">Twiterr</option>
-                        <option value="3">Instagram</option>
+                        <option value="1">Facebook</option>
+                        <option value="2">Twitter</option>
+                        <option value="3">Página WEB</option>
+                        <option value="4">Folleto</option>
+						<option value="5">Otros</option>
+
                       </select>
-                      <small id="medioHelp" class="form-text text-muted">Tipo de red social preferida del cliente</small>
+                   <!--   <small id="medioHelp" class="form-text text-muted">Tipo de red social preferida del cliente</small> -->
 
                     </div>
 				</td>
@@ -111,7 +114,7 @@
 					<div class="form-group">
     					<label for="cuenta">Cuenta</label>
                         <input  class="form-control" name="cuenta" id="cuenta" aria-describedby="cuentaHelp" placeholder="Ingrese valor">
-                        <small id="cuentaHelp" class="form-text text-muted">Cuenta de red social ej. @usuario</small>
+                     <!--    <small id="cuentaHelp" class="form-text text-muted">Cuenta de red social ej. @usuario</small> -->
                       </div>
 				</td>
 
@@ -140,7 +143,7 @@
 
 					<?php }?>
 					</select>
-					<small id="paisHelp" class="form-text text-muted">País de origen del cliente.</small>
+				<!-- 	<small id="paisHelp" class="form-text text-muted">País de origen del cliente.</small> -->
 
 					</div>
 				</td>
@@ -160,14 +163,14 @@
 					<?php }?>
 
 				</select>
-						<small id="estadoHelp" class="form-text text-muted">Estado de origen del cliente.</small>
+					<!-- 	<small id="estadoHelp" class="form-text text-muted">Estado de origen del cliente.</small>  -->
 				</div>
 				</td>
 				<td class="cuej" colspan="2">
 					<div class="form-group">
     					<label for="localidad">Localidad</label>
                         <input  class="form-control" name="localidad" id="localidad" aria-describedby="localidadHelp" placeholder="Ingrese valor">
-                        <small id="localidadHelp" class="form-text text-muted">Localidad de origen del cliente</small>
+                      <!--   <small id="localidadHelp" class="form-text text-muted">Localidad de origen del cliente</small> -->
                       </div>
 				</td>
 
@@ -186,14 +189,14 @@
 					<div class="form-group">
     					<label for="comentarios">Comentarios adicionales</label>
                         <textarea  class="form-control" name="comentarios" id="comentarios" aria-describedby="comentariosHelp" placeholder="Ingrese valor" ></textarea>
-                        <small id="comentariosHelp" class="form-text text-muted">Comentarios adicionales que puedan dar ayuda al proceso</small>
+                      <!--   <small id="comentariosHelp" class="form-text text-muted">Comentarios adicionales que puedan dar ayuda al proceso</small> -->
                       </div>
 				</td>
 
 				<td class="cuej" colspan="2">
 
 				<div class="form-group">
-                      <label  for="topico">* Tópico de interes</label>
+                      <label  for="topico">* Tópico de interés</label>
                       <select class="form-control" id="topico"  name ="topico" aria-describedby="topicoHelp">
 
 
@@ -207,8 +210,12 @@
 
 					<?php }?>
 
+
+									  <option value="99>" >Ecex</option>
+
+
 				</select>
-				     <small id="topicoHelp" class="form-text text-muted">Curso de inters del cliente</small>
+				    <!--  <small id="topicoHelp" class="form-text text-muted">Curso de inters del cliente</small> -->
 
 				</div>
 

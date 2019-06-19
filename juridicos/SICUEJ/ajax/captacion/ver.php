@@ -87,7 +87,7 @@
 								<input name="id" value ="<?php echo $id;?>" type="hidden"/>
                                 <label for="nombre">* Nombre cliente</label>
                                 <input value ="<?php echo $nombre;?>" class="form-control" id="nombre" name="nombre" aria-describedby="nombreHelp" placeholder="Ingrese valor">
-                                <small id="nombreHelp" class="form-text text-muted">* Nombre completo del cliente</small>
+                              <!--   <small id="nombreHelp" class="form-text text-muted">* Nombre completo del cliente</small>  -->
                     </div>
 				</td>
 				<td class="cuej">
@@ -97,7 +97,7 @@
 
                                 <label for="edad">Edad</label>
                                 <input value ="<?php echo $birthDate;?>"  class="form-control" id="edad" name="edad" aria-describedby="edadHelp" placeholder="Ingrese valor">
-                                <small id="edadHelp" class="form-text text-muted">Edad del cliente</small>
+                             <!--    <small id="edadHelp" class="form-text text-muted">Edad del cliente</small> -->
                     </div>
 				</td>
 				<td class="cuej">
@@ -107,11 +107,11 @@
                         <option <?php echo ($grado)?'':'selected'; ?>>Seleccione</option>
                         <option value="1" <?php echo ($grado=="1")?'selected':''; ?>>Preparatoria</option>
                         <option value="2" <?php echo ($grado=="2")?'selected':''; ?>>Licenciatura</option>
-                        <option value="3" <?php echo ($grado=="3")?'selected':''; ?>>Posgrado</option>
+                        <option value="3" <?php echo ($grado=="3")?'selected':''; ?>>Especialidad</option>
                         <option value="4" <?php echo ($grado=="4")?'selected':''; ?>>Maestria</option>
                         <option value="5" <?php echo ($grado=="5")?'selected':''; ?>>Doctorado</option>
                       </select>
-                      <small id="gradoHelp" class="form-text text-muted">Último grado</small>
+                    <!--   <small id="gradoHelp" class="form-text text-muted">Último grado</small> -->
 
                     </div>
 				</td>
@@ -119,7 +119,7 @@
 				<div class="form-group">
                                 <label for="telefono">Teléfono de contacto</label>
                                 <input  value ="<?php echo $telefono;?>" class="form-control" name="telefono" id="telefono" aria-describedby="telefonoHelp" placeholder="Ingrese valor">
-                                <small id="telefonoHelp" class="form-text text-muted">* Telefono del cliente para contacto</small>
+                               <!--  <small id="telefonoHelp" class="form-text text-muted">* Telefono del cliente para contacto</small> -->
                     </div>
                 </td>
 
@@ -130,7 +130,7 @@
 					<div class="form-group">
     					<label for="correo">* Correo Electronico</label>
                         <input value ="<?php echo $correo;?>" type="email" class="form-control" name="correo" id="correo" aria-describedby="correoHelp" placeholder="Ingrese valor">
-                        <small id="correoHelp" class="form-text text-muted">*Ingrese un correo electronico valido</small>
+                    <!--     <small id="correoHelp" class="form-text text-muted">*Ingrese un correo electronico valido</small> -->
                       </div>
 				</td>
 				<td class="cuej">
@@ -138,11 +138,13 @@
                       <label  for="medio">Tipo de medio social</label>
                       <select class="form-control" id="medio" name ="medio" aria-describedby="medioHelp">
                         <option <?php echo ($medio)?'':'selected'; ?>>Seleccione</option>
-                        <option value="1"  <?php echo ($medio=="1")?'selected':'';?>>Face book</option>
+                        <option value="1"  <?php echo ($medio=="1")?'selected':'';?>>Facebook</option>
                         <option value="2" <?php echo ($medio=="2")?'selected':'';?>>Twiterr</option>
-                        <option value="3" <?php echo ($medio=="3")?'selected':'';?>>Instagram</option>
+                        <option value="3" <?php echo ($medio=="3")?'selected':'';?>>Página WEB</option>
+                        <option value="4" <?php echo ($medio=="4")?'selected':'';?>>Folleto</option>
+                         <option value="5" <?php echo ($medio=="5")?'selected':'';?>>Otros</option>
                       </select>
-                      <small id="medioHelp" class="form-text text-muted">Tipo de red social preferida del cliente</small>
+                  <!--     <small id="medioHelp" class="form-text text-muted">Tipo de red social preferida del cliente</small> -->
 
                     </div>
 				</td>
@@ -150,7 +152,7 @@
 					<div class="form-group">
     					<label for="cuenta">Cuenta</label>
                         <input value="<?php echo $cuenta;?>"  class="form-control" name="cuenta" id="cuenta" aria-describedby="cuentaHelp" placeholder="Ingrese valor">
-                        <small id="cuentaHelp" class="form-text text-muted">Cuenta de red social ej. @usuario</small>
+                     <!--    <small id="cuentaHelp" class="form-text text-muted">Cuenta de red social ej. @usuario</small> -->
                       </div>
 				</td>
 
@@ -179,7 +181,7 @@
 
 					<?php }?>
 					</select>
-					<small id="paisHelp" class="form-text text-muted">País de origen del cliente.</small>
+				<!-- 	<small id="paisHelp" class="form-text text-muted">País de origen del cliente.</small> -->
 
 					</div>
 				</td>
@@ -199,14 +201,14 @@
 					<?php }?>
 
 				</select>
-						<small id="estadoHelp" class="form-text text-muted">Estado de origen del cliente.</small>
+						<!-- <small id="estadoHelp" class="form-text text-muted">Estado de origen del cliente.</small> -->
 				</div>
 				</td>
 				<td class="cuej" colspan="2">
 					<div class="form-group">
     					<label for="localidad">Localidad</label>
                         <input value="<?php echo $localidad; ?>"  class="form-control" name="localidad" id="localidad" aria-describedby="localidadHelp" placeholder="Ingrese valor">
-                        <small id="localidadHelp" class="form-text text-muted">Localidad de origen del cliente</small>
+                       <!--  <small id="localidadHelp" class="form-text text-muted">Localidad de origen del cliente</small> -->
                       </div>
 				</td>
 
@@ -228,14 +230,14 @@
 
                         	 <?php echo trim($comentarios);?>
                         </textarea>
-                        <small id="comentariosHelp" class="form-text text-muted">Comentarios adicionales que puedan dar ayuda al proceso</small>
+                     <!--    <small id="comentariosHelp" class="form-text text-muted">Comentarios adicionales que puedan dar ayuda al proceso</small> -->
                       </div>
 				</td>
 
 				<td class="cuej" colspan="2">
 
 				<div class="form-group">
-                      <label  for="topico">* Topico de interes</label>
+                      <label  for="topico">* Topico de interés</label>
                       <select class="form-control" id="topico"  name ="topico" aria-describedby="topicoHelp">
 
 
@@ -249,8 +251,10 @@
 
 					<?php }?>
 
+					 <option value="99>" >Ecex</option>
+
 				</select>
-				     <small id="topicoHelp" class="form-text text-muted">Curso de inters del cliente</small>
+				   <!--   <small id="topicoHelp" class="form-text text-muted">Curso de inters del cliente</small> -->
 
 				</div>
 

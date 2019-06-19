@@ -32,7 +32,7 @@ function eliminar(id)
 
 
 //----------------------------------------------
-//Función: insertar
+//Función: Buscar
 //Parámetros:
 //Return: Registro Exitoso o no
 //Archivo Origen: contactarView.php
@@ -105,7 +105,7 @@ function nuevo()
 		//});
 
 		$('#Btn_Cancelar').click(function(){
-			 location.reload();
+			 window.location.replace("/SICUEJ/ERP/captacion");
 		});
 
 		//$('#Codigo_Postal').blur(function(){
@@ -159,8 +159,22 @@ function insertar()
 	  data: datos,
 	  type: "POST",
 	  success: function(respuesta){
-		alert(respuesta);
-		location.reload();
+
+
+		if(isNaN(respuesta)){
+
+			 alert("Ocurrio un error al registrar un proceso de captación " + respuesta);
+				window.location.replace("/SICUEJ/ERP/captacion");
+
+
+
+			 }else{
+
+				alert("Se ha generado un nuevo proceso de captación, ID : " + respuesta);
+				window.location.replace("/SICUEJ/ERP/captacion?rowSelected="+respuesta);
+
+		 }
+
 	  }
 	});
 }
@@ -184,7 +198,7 @@ function actualizar()
 	  type: "POST",
 	  success: function(respuesta){
 		alert(respuesta);
-		location.reload();
+		window.location.replace("/SICUEJ/ERP/captacion");
 	  }
 	});
 }
@@ -212,7 +226,7 @@ function enviar()
 	  type: "POST",
 	  success: function(respuesta){
 		alert(respuesta);
-		location.reload();
+		window.location.replace("/SICUEJ/ERP/captacion");
 	  }
 	});
 }
@@ -271,7 +285,7 @@ function Captacion_Datos(id)
 		});
 
 		$('#btnRegresar').click(function(){
-			 location.reload();
+			 window.location.replace("/SICUEJ/ERP/captacion");
 		});
 	  }
 	});
@@ -379,7 +393,7 @@ function contactar(clientes){
 
 
 			$('#btnRegresar').click(function(){
-				 location.reload();
+				 window.location.replace("/SICUEJ/ERP/captacion");
 			});
 		  }
 		});

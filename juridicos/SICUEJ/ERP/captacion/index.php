@@ -64,6 +64,9 @@ include ("../../php/HTMLERP.php");
 
 		var table = 	 $('#tbl_captacion').DataTable();
 
+		table
+	    .order( [ 0, 'desc' ] )
+	    .draw();
 
 
 		$('#btnNuevo').click(function(){
@@ -147,10 +150,13 @@ $sql = "SELECT cap.*,
                                  (Select pa.paisnombre from pais pa where pa.id =  cap.pais limit 1) as paisdesc,
                                     (SELECT edo.estadonombre FROM estado edo where edo.id =  cap.estado limit 1) as estadodesc,
                                        (SELECT CONCAT(nombre,' ',apellido_paterno) FROM usuarios  WHERE  id_usuario = cap.id_empleado limit 1) as nombre_empleado
-                                FROM captacion cap  ORDER BY ultima_modificacion desc LIMIT 100;";
+                                FROM captacion cap  ORDER BY cap.id desc LIMIT 100;";
 mysqli_query($conexion, "SET NAMES 'utf8'");
 
 $results = mysqli_query($conexion,$sql);
+
+
+$rowSelected = isset($_GET["rowSelected"]) ? $_GET["rowSelected"] : null;
 
 ?>
 
@@ -224,7 +230,7 @@ $results = mysqli_query($conexion,$sql);
 	<table id="tbl_captacion" class="table  table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Alta</th>
 			<th>Empleado</th>
 
@@ -232,8 +238,8 @@ $results = mysqli_query($conexion,$sql);
 			<th>Cliente</th>
 
 			<th>Correo</th>
-			<th>Tel</th>
-			<th>Interes</th>
+			<th>Teléfono</th>
+			<th>Interés</th>
 			<th>Estado</th>
 
 
@@ -269,11 +275,9 @@ $results = mysqli_query($conexion,$sql);
 			    ?>
 
 
-
-			<tr>
+			<tr <?php echo $rowSelected === $row['id'] ? "class='selected'" : ""  ?>>
 				<td><a href="javascript: Captacion_Datos(<?php echo $row['id'];?>)"><?php echo $row["id"]; ?></a> </td>
-				<td><?php echo
-
+				<td data-sort="<?php echo strtotime($row["captacion_fecha_alta"]);?>" ><?php echo
 
 				date('d/m/Y h:i' , strtotime($row["captacion_fecha_alta"]) ); ?>
 				</td>
@@ -315,7 +319,7 @@ $results = mysqli_query($conexion,$sql);
 	<table style="width: 100%; align-content: center;" class="table">
 		<thead>
 			<tr>
-				<th colspan="4">Búsqueda avanzada</th>
+				<th colspan="4">Búsqueda por periodo</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -324,7 +328,7 @@ $results = mysqli_query($conexion,$sql);
 				<div class="form-group col-md-8">
                                 <label for="inicio">Inicio</label>
                                 <input readonly="readonly" required="required" class="form-control" id="inicio" name="inicio" aria-describedby="inicioHelp" placeholder="Clic para Ingresar valor">
-                                <small id="inicioHelp" class="form-text text-muted">Fecha inicio de búsqueda</small>
+                                <small id="inicioHelp" class="form-text text-muted">Inicio del periodo deseado</small>
                     </div>
 
 			</td>
@@ -332,7 +336,7 @@ $results = mysqli_query($conexion,$sql);
 				<div class="form-group col-md-8">
                                 <label for="fin">Fin</label>
                                 <input readonly="readonly" required="required" class="form-control" id="fin" name="fin" aria-describedby="inicioHelp" placeholder="Clic para ingresar valor">
-                                <small id="finHelp" class="form-text text-muted">Fecha fin de búsqueda</small>
+                                <small id="finHelp" class="form-text text-muted">Término del periodo deseado</small>
                     </div>
 
 			</td>
