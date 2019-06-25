@@ -61,7 +61,11 @@ include ("../../php/HTMLERP.php");
 
 	$('Body').ready(function(){
 
-		var table = 	 $('#tbl_registro').DataTable();
+		var table = 	 $('#tbl_registro').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 
 		$('#btnNuevo').click(function(){
@@ -119,7 +123,7 @@ $results = mysqli_query($conexion,$sql);
 		<thead>
 		<tr>
 			<th>Fecha captura</th>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Nombre</th>
 			<th>Solicito</th>
 			<th>Avance</th>

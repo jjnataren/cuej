@@ -76,7 +76,7 @@
 	<table  class="cuej">
 		<thead>
 			<tr>
-				<th class="cuej" colspan="4">Actualizar proceso de captación Id [<?php echo $id;?>]</th>
+				<th class="cuej" colspan="4">Actualizar proceso de captación ID [<?php echo $id;?>]</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -135,7 +135,7 @@
 				</td>
 				<td class="cuej">
 					<div class="form-group">
-                      <label  for="medio">Tipo de medio social</label>
+                      <label  for="medio">Red social más frecuentada</label>
                       <select class="form-control" id="medio" name ="medio" aria-describedby="medioHelp">
                         <option <?php echo ($medio)?'':'selected'; ?>>Seleccione</option>
                         <option value="1"  <?php echo ($medio=="1")?'selected':'';?>>Facebook</option>
@@ -168,7 +168,7 @@
 			<tr>
 				<td class="cuej">
 					<div class="form-group">
-                      <label  for="pais">País</label>
+                      <label  for="pais">País de recidencia</label>
                       <select class="form-control" id="pais"  name ="pais" aria-describedby="paisHelp">
 
 

@@ -54,28 +54,14 @@
                                 <!-- <small id="nombreHelp" class="form-text text-muted">* Nombre completo del cliente</small>  -->
                     </div>
 				</td>
-				<td class="cuej">
+				<td class="cuej" colspan="2">
 					<div class="form-group col-md-8">
                                 <label for="edad">Edad</label>
                                 <input  class="form-control" id="edad" name="edad" aria-describedby="edadHelp" placeholder="Ingrese valor">
                               <!--   <small id="edadHelp" class="form-text text-muted">Edad del cliente</small>  -->
                     </div>
 				</td>
-				<td class="cuej">
-					<div class="form-group">
-                      <label  for="grado">Grado de estudios</label>
-                      <select class="form-control" id="grado" name ="grado" aria-describedby="gradoHelp">
-                        <option selected>Seleccione</option>
-                        <option value="1">Preparatoria</option>
-                        <option value="2">Licenciatura</option>
-                        <option value="3">Especialidad</option>
-                        <option value="4">Maestría</option>
-                        <option value="5">Doctorado</option>
-                      </select>
-                      <!-- <small id="gradoHelp" class="form-text text-muted">Último grado</small>-->
 
-                    </div>
-				</td>
 				<td class="cuej">
 				<div class="form-group">
                                 <label for="telefono">Número Telefónico</label>
@@ -96,7 +82,7 @@
 				</td>
 				<td class="cuej">
 					<div class="form-group">
-                      <label  for="medio">Tipo de medio social</label>
+                      <label  for="medio">Red social más frecuentada</label>
                       <select class="form-control" id="medio" name ="medio" aria-describedby="medioHelp">
                         <option selected>Seleccione</option>
                         <option value="1">Facebook</option>
@@ -130,7 +116,7 @@
 			<tr>
 				<td class="cuej">
 					<div class="form-group">
-                      <label  for="pais">País</label>
+                      <label  for="pais">País de recidencia</label>
                       <select class="form-control" id="pais"  name ="pais" aria-describedby="paisHelp">
 
 
@@ -185,18 +171,10 @@
 
 			<tr>
 
-				<td class="cuej" colspan="2">
-					<div class="form-group">
-    					<label for="comentarios">Comentarios adicionales</label>
-                        <textarea  class="form-control" name="comentarios" id="comentarios" aria-describedby="comentariosHelp" placeholder="Ingrese valor" ></textarea>
-                      <!--   <small id="comentariosHelp" class="form-text text-muted">Comentarios adicionales que puedan dar ayuda al proceso</small> -->
-                      </div>
-				</td>
-
-				<td class="cuej" colspan="2">
+					<td class="cuej" colspan="2">
 
 				<div class="form-group">
-                      <label  for="topico">* Tópico de interés</label>
+                      <label  for="topico">* Materia de interés</label>
                       <select class="form-control" id="topico"  name ="topico" aria-describedby="topicoHelp">
 
 
@@ -206,7 +184,7 @@
             			while ($row = @mysqli_fetch_assoc($resultsCarrera))
             			{?>
 
-						  <option value="<?php echo $row["id_carrera"];?>" > <?php echo $row['carrera'];?></option>
+						  <option value="<?php echo $row["id_carrera"];?>" ><small> <?php echo $row['carrera'];?> </small></option>
 
 					<?php }?>
 
@@ -221,6 +199,35 @@
 
 
 				</td>
+
+				<td class="cuej"  colspan="2">
+					<div class="form-group">
+                      <label  for="grado">Grado de estudios</label>
+                      <select class="form-control" id="grado" name ="grado" aria-describedby="gradoHelp">
+                        <option selected>Seleccione</option>
+                        <option value="1">Preparatoria</option>
+                        <option value="2">Licenciatura</option>
+                        <option value="3">Especialidad</option>
+                        <option value="4">Maestría</option>
+                        <option value="5">Doctorado</option>
+                      </select>
+                      <!-- <small id="gradoHelp" class="form-text text-muted">Último grado</small>-->
+
+                    </div>
+				</td>
+
+				</tr>
+				<tr>
+
+				<td class="cuej" colspan="4">
+					<div class="form-group">
+    					<label for="comentarios">Comentarios adicionales</label>
+                        <textarea  class="form-control" name="comentarios" id="comentarios" aria-describedby="comentariosHelp" placeholder="Ingrese valor" ></textarea>
+                      <!--   <small id="comentariosHelp" class="form-text text-muted">Comentarios adicionales que puedan dar ayuda al proceso</small> -->
+                      </div>
+				</td>
+
+
 
 			</tr>
 			<tr>

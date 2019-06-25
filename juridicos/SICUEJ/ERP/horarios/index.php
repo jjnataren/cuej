@@ -182,7 +182,7 @@ $results = mysqli_query($conexion,$sql);
 				<td>
 					<div class="form-group">
     					<label for="descripcion">Descripción</label>
-                        <textarea  class="form-control" name="descripcion[]" id="descripcion" aria-describedby="descripcionHelp" >  <?php echo $row["descripcion"]?></textarea>
+                        <textarea  class="form-control" name="descripcion[]" id="descripcion" aria-describedby="descripcionHelp" ><?php echo $row["descripcion"]?></textarea>
                         <small id="descripcionHelp" class="form-text text-muted">*Descripción del evento</small>
                       </div>
 

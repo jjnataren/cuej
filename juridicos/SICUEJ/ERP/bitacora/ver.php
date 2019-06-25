@@ -56,13 +56,18 @@ include ("../../php/HTMLERP.php");
 
 <script type="text/javascript" src="/SICUEJ/js/bitacora/funciones.js"></script>
 <script src="/SICUEJ/js/jquery-ui.js" ></script>
+<script type="text/javascript" src="/SICUEJ/js/dp/datepicker-es.js"></script>
 
 <script type="text/javascript" >
 
 	$('Body').ready(function(){
 
 
-		var table = 	 $('#tbl_horarios').DataTable();
+		var table = 	 $('#tbl_horarios').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 		$('#btnBuscar').click(function(){
 
@@ -101,8 +106,11 @@ include ("../../php/HTMLERP.php");
 
 		});
 
+		$.datepicker.regional[ "es" ];
 
 		$( "#inicio" ).datepicker({dateFormat: "dd/mm/yy"});
+
+
 
 		$( "#fin" ).datepicker({dateFormat: "dd/mm/yy"});
 
@@ -161,7 +169,7 @@ $eventos = [];
 				<div class="form-group col-md-8">
                                 <label for="inicio">Inicio</label>
                                 <input readonly="readonly" required="required" class="form-control" id="inicio" name="inicio" aria-describedby="inicioHelp" placeholder="Clic para Ingresar valor">
-                                <small id="inicioHelp" class="form-text text-muted">Fecha inicio de búsqueda</small>
+                                <small id="inicioHelp" class="form-text text-muted">Inicio del periodo deseado</small>
                     </div>
 
 			</td>
@@ -169,7 +177,7 @@ $eventos = [];
 				<div class="form-group col-md-8">
                                 <label for="fin">Fin</label>
                                 <input readonly="readonly" required="required" class="form-control" id="fin" name="fin" aria-describedby="inicioHelp" placeholder="Clic para ingresar valor">
-                                <small id="finHelp" class="form-text text-muted">Fecha fin de búsqueda</small>
+                                <small id="finHelp" class="form-text text-muted">Término del periodo deseado</small>
                     </div>
 
 			</td>
@@ -212,7 +220,7 @@ $eventos = [];
 	<thead>
 		<tr>
 			<th>Fecha</th>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Trabajador</th>
 			<?php
 

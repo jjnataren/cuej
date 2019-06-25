@@ -65,7 +65,11 @@ $results = mysqli_query($conexion,$sql);
 
 	$('Body').ready(function(){
 
-		$('#tbl_captacion').DataTable();
+		$('#tbl_captacion').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 	/*	Captacion_B
 	uscar();
@@ -119,7 +123,7 @@ $results = mysqli_query($conexion,$sql);
 	<table id="tbl_captacion" class="display table-condensed table-striped" style="width:100%">
 		<thead>
 		<tr>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Fecha captura</th>
 			<th>Cliente</th>
 			<th>Correo electronico</th>

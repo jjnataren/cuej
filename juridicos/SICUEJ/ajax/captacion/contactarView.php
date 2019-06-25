@@ -50,7 +50,7 @@
     						<thead>
     							<tr>
     								<th>
-    									Id proceso
+    									ID proceso
     								</th>
     								<th>
     									Cliente

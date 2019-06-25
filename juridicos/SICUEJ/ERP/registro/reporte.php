@@ -57,13 +57,17 @@ include ("../../php/HTMLERP.php");
 <script type="text/javascript" src="/SICUEJ/js/registro/funciones.js"></script>
 <script src="/SICUEJ/js/jquery-ui.js" ></script>
 <script src="/SICUEJ/js/download.js" ></script>
-
+<script type="text/javascript" src="/SICUEJ/js/dp/datepicker-es.js"></script>
 
 <script type="text/javascript" >
 
 	$('Body').ready(function(){
 
-		var table = 	 $('#tbl_registro').DataTable();
+		var table = 	 $('#tbl_registro').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 
 		$(function() {
@@ -157,6 +161,8 @@ include ("../../php/HTMLERP.php");
 
 		});
 
+
+		$.datepicker.regional[ "es" ];
 
 		$( "#inicio" ).datepicker({dateFormat: "dd/mm/yy"});
 
@@ -282,7 +288,6 @@ $results = mysqli_query($conexion,$sql);
 
 
                       </select>
-                      <small id="trabajadorHelp" class="form-text text-muted">Seleccione un trabajador</small>
 
                     </div>
 
@@ -304,7 +309,7 @@ $results = mysqli_query($conexion,$sql);
 				<div class="form-group">
                                 <label for="jefe">Jefe inmediato</label>
                                 <input required="required" class="form-control" id="jefe" name="jefe" aria-describedby="jefeHelp" placeholder="Ingrese valor">
-                                <small id="jefeHelp" class="form-text text-muted">Jefe inmediato</small>
+
                     </div>
 
 				</td>
@@ -354,7 +359,7 @@ $results = mysqli_query($conexion,$sql);
 	<table id="tbl_registro" class="table table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Fecha captura</th>
 			<th>Tarea</th>
 			<th>Solicito</th>

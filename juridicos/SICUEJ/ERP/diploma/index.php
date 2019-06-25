@@ -59,9 +59,13 @@ include ("../../php/HTMLERP.php");
 
 	$('Body').ready(function(){
 
-		var table = 	 $('#tblAlumno').DataTable();
+		var table = 	 $('#tblAlumno').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
-
+			/*
 		 $('#tblAlumno tbody').on( 'click', 'tr', function () {
 		        if ( $(this).hasClass('selected') ) {
 		            $(this).removeClass('selected');
@@ -72,9 +76,20 @@ include ("../../php/HTMLERP.php");
 		        }
 
 
-		    } );
+		    } );*/
 
-		 var tableDip = 	 $('#tblDiploma').DataTable();
+
+		    $('#tblAlumno tbody').on( 'click', 'tr', function () {
+		        $(this).toggleClass('selected');
+		    });
+
+
+
+		 var tableDip = 	 $('#tblDiploma').DataTable({
+			    language: {
+			        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+			    }
+    		});
 
 
 		 $('#tblDiploma tbody').on( 'click', 'tr', function () {
@@ -103,9 +118,14 @@ include ("../../php/HTMLERP.php");
 			 if( tableDip.rows('.selected').data().length > 0 ){
 
 				 	var diploma = tableDip.row('tr.selected').data()[0];
-				 	var alumno = table.row('tr.selected').data()[0]
 
-					generar(diploma, alumno);
+				 	var ids = $.map(table.rows('.selected').data(), function (item) {
+				        return item[0]
+				    });
+
+				 	var alumno = JSON.stringify(table.rows('.selected').data()) ;
+
+					generar(diploma, JSON.stringify(ids));
 
 				}else{
 
@@ -162,7 +182,7 @@ $resultsDiploma = mysqli_query($conexion,$sql);
                     <table id="tblDiploma" class="table table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Nombre</th>
 			<th>Inicio</th>
 			<th>Fin</th>
@@ -204,11 +224,11 @@ $resultsDiploma = mysqli_query($conexion,$sql);
 <h4>Seleccione un alumno</h4>
 
 <div id="divDiploma">
-<div class="table-responsive">
+<div class="table-responsive small">
 	<table id="tblAlumno" class="table table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Nombre</th>
 			<th>A. Paterno</th>
 			<th>A. Materno</th>

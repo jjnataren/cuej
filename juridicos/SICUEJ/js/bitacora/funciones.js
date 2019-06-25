@@ -110,7 +110,11 @@ function buscar()
 		  $('#divBitacora').html(respuesta);
 
 
-		var table = 	 $('#tbl_horarios').DataTable();
+		var table = 	 $('#tbl_horarios').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 
 

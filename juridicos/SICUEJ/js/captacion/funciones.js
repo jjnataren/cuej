@@ -55,7 +55,11 @@ function buscar(){
 		  $('#div_captacion').html(respuesta);
 
 
-		  var table = 	 $('#tbl_captacion').DataTable();
+		  var table = 	 $('#tbl_captacion').DataTable({
+			    language: {
+			        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+			    }
+    		});
 
 
 			$('#tbl_captacion tbody').on( 'click', 'tr', function () {

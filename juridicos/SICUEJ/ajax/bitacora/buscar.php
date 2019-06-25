@@ -73,7 +73,7 @@
 
 
 
-<div class="table-responsive">
+<div class="table-responsive small">
 
 	<form id="frmBitacora">
 
@@ -82,7 +82,7 @@
 	<thead>
 	<tr>
 	<th>Fecha</th>
-	<th>Id</th>
+	<th>ID</th>
 	<th>Trabajador</th>
 	<?php
 

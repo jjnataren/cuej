@@ -57,12 +57,17 @@ include ("../../php/HTMLERP.php");
 <script type="text/javascript" src="/SICUEJ/js/captacion/funciones.js"></script>
 <script src="/SICUEJ/js/ck/ckeditor.js"></script>
 <script src="/SICUEJ/js/jquery-ui.js" ></script>
+<script type="text/javascript" src="/SICUEJ/js/dp/datepicker-es.js"></script>
 
 <script type="text/javascript" >
 
 	$('Body').ready(function(){
 
-		var table = 	 $('#tbl_captacion').DataTable();
+		var table = 	 $('#tbl_captacion').DataTable({
+				    language: {
+				        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+				    }
+	    		});
 
 		table
 	    .order( [ 0, 'desc' ] )
@@ -111,6 +116,7 @@ include ("../../php/HTMLERP.php");
 
 		});
 
+		$.datepicker.regional[ "es" ];
 
 		$( "#inicio" ).datepicker({dateFormat: "dd/mm/yy"});
 

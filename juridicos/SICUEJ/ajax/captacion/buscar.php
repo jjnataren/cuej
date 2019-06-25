@@ -55,7 +55,7 @@
 	<table id="tbl_captacion" class="table  table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Alta</th>
 			<th>Estatus</th>
 			<th>Cliente</th>

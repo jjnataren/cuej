@@ -56,12 +56,17 @@ include ("../../php/HTMLERP.php");
 
 <script type="text/javascript" src="/SICUEJ/js/registro/funciones.js"></script>
 <script src="/SICUEJ/js/jquery-ui.js" ></script>
+<script type="text/javascript" src="/SICUEJ/js/dp/datepicker-es.js"></script>
 
 <script type="text/javascript" >
 
 	$('Body').ready(function(){
 
-		var table = 	 $('#tbl_registro').DataTable();
+		var table = 	 $('#tbl_registro').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 
 
@@ -102,6 +107,7 @@ include ("../../php/HTMLERP.php");
 
 		});
 
+		$.datepicker.regional[ "es" ];
 
 		$( "#inicio" ).datepicker({dateFormat: "dd/mm/yy"});
 
@@ -140,7 +146,7 @@ $results = mysqli_query($conexion,$sql);
 <table  style="width: 100%; align-content: center;">
 	<thead>
 		<tr>
-			<th  colspan="4"><i class="fa fa-eye"></i> Revisar actividades empleados <div class="header_01"><hr /></div></th>
+			<th  colspan="4"><i class="fa fa-eye"></i> Supervición de actividades de empleados <div class="header_01"><hr /></div></th>
 		</tr>
 	</thead>
 </table>
@@ -152,7 +158,7 @@ $results = mysqli_query($conexion,$sql);
 				<div class="form-group col-md-8">
                                 <label for="inicio">Inicio</label>
                                 <input readonly="readonly" required="required" class="form-control" id="inicio" name="inicio" aria-describedby="inicioHelp" placeholder="Clic para Ingresar valor">
-                                <small id="inicioHelp" class="form-text text-muted">Fecha inicio de búsqueda</small>
+                                <small id="inicioHelp" class="form-text text-muted">Inicio del periodo deseado</small>
                     </div>
 
 			</td>
@@ -160,7 +166,7 @@ $results = mysqli_query($conexion,$sql);
 				<div class="form-group col-md-8">
                                 <label for="fin">Fin</label>
                                 <input readonly="readonly" required="required" class="form-control" id="fin" name="fin" aria-describedby="inicioHelp" placeholder="Clic para ingresar valor">
-                                <small id="finHelp" class="form-text text-muted">Fecha fin de búsqueda</small>
+                                <small id="finHelp" class="form-text text-muted">Término del periodo deseado</small>
                     </div>
 
 			</td>
@@ -178,7 +184,7 @@ $results = mysqli_query($conexion,$sql);
 	<table id="tbl_registro" class="table table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Fecha captura</th>
 			<th>Empleado</th>
 			<th>Tarea</th>

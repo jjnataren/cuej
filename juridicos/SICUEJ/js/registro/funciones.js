@@ -155,7 +155,11 @@ function buscar()
 		  $('#divRegistro').html(respuesta);
 
 
-		var table = 	 $('#tbl_registro').DataTable();
+		var table = 	 $('#tbl_registro').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 		$('a.btn').click(function(){
 
@@ -216,7 +220,11 @@ function buscarUsuario()
 		  $('#divRegistro').html(respuesta);
 
 
-		var table = 	 $('#tbl_registro').DataTable();
+		var table = 	 $('#tbl_registro').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 		$('a.btn').click(function(){
 

@@ -97,7 +97,11 @@ function buscar()
 		  $('#divRegistro').html(respuesta);
 
 
-		var table = 	 $('#tbl_registro').DataTable();
+		var table = 	 $('#tbl_registro').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 		$('a.btn').click(function(){
 
@@ -158,7 +162,11 @@ function buscarUsuario()
 		  $('#divRegistro').html(respuesta);
 
 
-		var table = 	 $('#tbl_registro').DataTable();
+		var table = 	 $('#tbl_registro').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 		$('a.btn').click(function(){
 
@@ -204,7 +212,11 @@ function ver(id)
 			});
 
 
-		  var t = $('#tblMediaFile').DataTable();
+		  var t = $('#tblMediaFile').DataTable({
+			    language: {
+			        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+			    }
+    		});
 
 		  $('#tblMediaFile tbody').on( 'click', 'a.btn', function () {
 			    t

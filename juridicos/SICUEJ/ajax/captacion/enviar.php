@@ -73,13 +73,13 @@ require '../../lib/PHPMailer/src/SMTP.php';
 	    $mail = new PHPMailer;
 	    $mail->isSMTP();
 	    $mail->SMTPDebug = 0; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
-	    $mail->Host = "mail.cuej.edu.mx"; // use $mail->Host = gethostbyname('smtp.gmail.com'); // if your network does not support SMTP over IPv6
-	    $mail->Port = 26; // TLS only
-	   // $mail->SMTPSecure = 'tls'; // ssl is depracated
+	    $mail->Host = "smtp.gmail.com"; // use $mail->Host = gethostbyname('smtp.gmail.com'); // if your network does not support SMTP over IPv6
+	    $mail->Port = 587; // TLS only
+	    $mail->SMTPSecure = 'tls'; // ssl is depracated
 	    $mail->SMTPAuth = true;
-	    $mail->Username = 'difusion@cuej.edu.mx';
-	    $mail->Password = 'xshj1H%wqjlh';
-	    $mail->setFrom('difusion@cuej.edu.mx', 'difusion@cuej.edu.mx');
+	    $mail->Username = 'maaahernandezgarcia@gmail.com';
+	    $mail->Password = 'Natax621.';
+	    $mail->setFrom('maaahernandezgarcia@gmail.com', 'maaahernandezgarcia@gmail.com');
 	    $mail->addAddress($correos[$key], $correos[$key]);
 	    $mail->Subject = 'CUEJ CONTACTO:  ' . $topicos[$key];
 	    $mail->CharSet = 'UTF-8';

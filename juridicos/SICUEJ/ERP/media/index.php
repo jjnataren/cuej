@@ -63,7 +63,11 @@ include ("../../php/HTMLERP.php");
 	$('Body').ready(function(){
 
 
-		var t = $('#tblCarreras').DataTable();
+		var t = $('#tblCarreras').DataTable({
+		    language: {
+		        url: '/SICUEJ/js/DataTables/localisation/Spanish.json'
+		    }
+		});
 
 
 	});
@@ -123,7 +127,7 @@ $results = mysqli_query($conexion,$sql);
 
 		<thead>
 			<tr>
-				<th>Id</th>
+				<th>ID</th>
 				<th>Nombre</th>
 				<th>Abreviatura</th>
 				<th>Clave</th>

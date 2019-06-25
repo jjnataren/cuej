@@ -53,7 +53,7 @@
 	<table id="tbl_registro" class="table table-sm table-hover" style="width:100%">
 		<thead>
 		<tr>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Fecha captura</th>
 			<th>Empleado</th>
 			<th>Tarea</th>

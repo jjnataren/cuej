@@ -39,7 +39,12 @@ $mpdf= new mPDF('',    // mode - default ''
 $html_generales = file_get_contents('./dip.html');
 
 $diploma = $_REQUEST["diploma"];
-$alumno =  $_REQUEST["alumno"];
+$alumnos =  json_decode( $_REQUEST["alumno"] );
+
+
+foreach ($alumnos as $key => $alumno) {
+
+
 
 $sql = "SELECT * FROM alumnos WHERE id_alumno = $alumno;";
 
@@ -83,15 +88,23 @@ if ( $rowDiploma && $rowAlumno ){
 
 
 
-    $mpdf->Output();
-    exit;
+
+
+
+
 
 }else{
 
     echo "Datos no validos";
+    break;
+    exit;
+}
 
 }
 
+
+$mpdf->Output();
+exit;
 
 
 
