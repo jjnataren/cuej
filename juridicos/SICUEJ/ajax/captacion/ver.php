@@ -168,7 +168,7 @@
 			<tr>
 				<td class="cuej">
 					<div class="form-group">
-                      <label  for="pais">País de recidencia</label>
+                      <label  for="pais">País de residencia</label>
                       <select class="form-control" id="pais"  name ="pais" aria-describedby="paisHelp">
 
 
@@ -187,7 +187,7 @@
 				</td>
 				<td class="cuej">
 				<div class="form-group">
-                      <label  for="estado">Estado</label>
+                      <label  for="estado">Estado de residencia</label>
                       <select class="form-control" id="estado"  name ="estado" aria-describedby="estadoHelp">
 
 
@@ -206,7 +206,7 @@
 				</td>
 				<td class="cuej" colspan="2">
 					<div class="form-group">
-    					<label for="localidad">Localidad</label>
+    					<label for="localidad">Localidad de residencia</label>
                         <input value="<?php echo $localidad; ?>"  class="form-control" name="localidad" id="localidad" aria-describedby="localidadHelp" placeholder="Ingrese valor">
                        <!--  <small id="localidadHelp" class="form-text text-muted">Localidad de origen del cliente</small> -->
                       </div>

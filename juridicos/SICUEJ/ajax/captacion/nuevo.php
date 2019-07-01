@@ -116,7 +116,7 @@
 			<tr>
 				<td class="cuej">
 					<div class="form-group">
-                      <label  for="pais">País de recidencia</label>
+                      <label  for="pais">País de residencia</label>
                       <select class="form-control" id="pais"  name ="pais" aria-describedby="paisHelp">
 
 
@@ -135,7 +135,7 @@
 				</td>
 				<td class="cuej">
 				<div class="form-group">
-                      <label  for="estado">Estado</label>
+                      <label  for="estado">Estado de residencia</label>
                       <select class="form-control" id="estado"  name ="estado" aria-describedby="estadoHelp">
 
 
