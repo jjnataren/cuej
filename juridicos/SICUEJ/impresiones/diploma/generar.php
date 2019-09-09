@@ -36,11 +36,22 @@ $mpdf= new mPDF('',    // mode - default ''
     'L');  // L - landscape, P - portrait
 
 
-$html_generales = file_get_contents('./dip.html');
+$html_tmp = file_get_contents('./dip.html');
+
+$html_generales = "";
+
+$html_generales = $html_tmp;
 
 $diploma = $_REQUEST["diploma"];
 $alumnos =  json_decode( $_REQUEST["alumno"] );
 
+mysqli_query($conexion, "SET NAMES 'utf8'");
+
+$sql = "SELECT * FROM diploma WHERE id = $diploma;";
+
+$resultsDiploma = mysqli_query($conexion,$sql);
+
+$rowDiploma = @mysqli_fetch_assoc($resultsDiploma);
 
 foreach ($alumnos as $key => $alumno) {
 
@@ -52,11 +63,7 @@ mysqli_query($conexion, "SET NAMES 'utf8'");
 
 $resultsAlumno = mysqli_query($conexion,$sql);
 
-$sql = "SELECT * FROM diploma WHERE id = $diploma;";
 
-$resultsDiploma = mysqli_query($conexion,$sql);
-
-$rowDiploma = @mysqli_fetch_assoc($resultsDiploma);
 $rowAlumno = @mysqli_fetch_assoc($resultsAlumno);
 
 if ( $rowDiploma && $rowAlumno ){
@@ -86,12 +93,7 @@ if ( $rowDiploma && $rowAlumno ){
     $mpdf->AddPage('P','','','','',1,1,1,1,0,0);
     $mpdf->WriteHTML($html_generales);
 
-
-
-
-
-
-
+    $html_generales = $html_tmp;
 
 }else{
 
