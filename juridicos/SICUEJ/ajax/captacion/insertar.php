@@ -3,9 +3,9 @@
 	-- ==============================================================================
 	-- Empresa: Centro Universitario de Estudios Jurídicos
 	-- Proyecto: Sistema Integral - Administrativo
-	-- Autor:  Nancy Flores Torrecilla
-	-- Responsable: Nancy Flores Torrecilla
-	-- Fecha de Creación: [Mayo, 21 2016]
+	-- Autor:  Jesus Nataren
+	-- Responsable: Jesus Nataren
+	-- Fecha de Creación: [Mayo, 21 2019]
 	-- País: México
 	-- Objetivo: Registro de Nuevo Alumno
 	-- Última Modificación: [Mayo, 21 2016]
@@ -30,15 +30,29 @@
 	    $birthDate = null;
 	$telefono=trim( $_POST["telefono"]);
 	$correo= trim($_POST["correo"]);
-	$medio= $_POST["medio"];
+
+
+
+	$medio=   $_POST["medio"];
+	$medio = !empty($medio) ? "'$medio'" : "NULL";
+
+
 	$cuenta= trim($_POST["cuenta"]);
 	$pais= $_POST["pais"];
 	$estado= $_POST["estado"];
+	$estado = !empty($estado) ? "'$estado'" : "NULL";
+
+
 	$localidad= trim($_POST["localidad"]);
 	$topico= $_POST["topico"];
+	$topico = !empty($topico) ? "'$topico'" : "NULL";
+
+
 	$comentarios=trim( $_POST["comentarios"]);
 	$grado= $_POST["grado"];
-    $fechaCaptura = date('Y-m-d H:i:s');
+	$grado = !empty($grado) ? "'$grado'" : "NULL";
+
+	$fechaCaptura = date('Y-m-d H:i:s');
     $estatus = 1;
 
 	//creacion de usuario y contraseña

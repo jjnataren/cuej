@@ -124,8 +124,17 @@ function nuevo()
 				{
 
 
+						if($('#edad').val().trim() == "" || !isNaN( $('#edad').val().trim())  )
+						{
 
-					insertar();
+						insertar();
+						}else{
+							alert("Debe insertar  una edad correcta");
+							$('#edad').focus();
+						}
+
+
+
 				}
 				else
 				{

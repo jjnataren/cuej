@@ -84,7 +84,7 @@
 					<div class="form-group">
                       <label  for="medio">Red social más frecuentada</label>
                       <select class="form-control" id="medio" name ="medio" aria-describedby="medioHelp">
-                        <option selected>Seleccione</option>
+                        <option selected value="">Seleccione</option>
                         <option value="1">Facebook</option>
                         <option value="2">Twitter</option>
                         <option value="3">Página WEB</option>
@@ -204,7 +204,7 @@
 					<div class="form-group">
                       <label  for="grado">Grado de estudios</label>
                       <select class="form-control" id="grado" name ="grado" aria-describedby="gradoHelp">
-                        <option selected>Seleccione</option>
+                        <option selected value="">Seleccione</option>
                         <option value="1">Preparatoria</option>
                         <option value="2">Licenciatura</option>
                         <option value="3">Especialidad</option>
