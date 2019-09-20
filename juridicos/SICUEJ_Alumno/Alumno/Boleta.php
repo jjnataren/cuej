@@ -25,24 +25,31 @@ include ("../php/HTML.php");
 
 $idAlumno = $_SESSION["id_Alumno_Programa"];
 
-$sql = "SELECT DISTINCT id_grupo FROM alumnos_evaluaciones JOIN grupos USING (id_grupo) JOIN ciclos_escolares USING (id_ciclo_escolar) WHERE id_alumno_programa = '$idAlumno' ORDER BY ciclo_escolar DESC;";
+$sql = "SELECT DISTINCT id_grupo FROM alumnos_evaluaciones
+JOIN grupos grp USING (id_grupo)
+JOIN ciclos_escolares ciclos on (grp.id_ciclo_escolar = ciclos.id_ciclo_escolar  and ciclos.fecha_fin < curdate())
+WHERE id_alumno_programa = '$idAlumno' ORDER BY ciclos.ciclo_escolar DESC;";
+
 $result = mysqli_query($conexion,$sql);
-$row = mysqli_fetch_array($result);
 
-$grupo = $row["id_grupo"];
+if (mysqli_num_rows($result) !== 0 ) {
 
-$sql = "SELECT  COUNT(evaluacion_profesor) as evaluacion FROM alumnos_evaluaciones JOIN grupos USING (id_grupo) JOIN materias USING (id_materia) WHERE id_alumno_programa = '$idAlumno' AND id_grupo = '$grupo' and evaluacion_profesor = '0000-00-00'  ORDER BY clave_materia;";
-$result = mysqli_query($conexion,$sql);
-$row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result);
 
-$pendientes = $row["evaluacion"];
+    $grupo = $row["id_grupo"];
 
-if ($pendientes > 0){
+    $sql = "SELECT  COUNT(evaluacion_profesor) as evaluacion FROM alumnos_evaluaciones JOIN grupos USING (id_grupo) JOIN materias USING (id_materia) WHERE id_alumno_programa = '$idAlumno' AND id_grupo = '$grupo' and evaluacion_profesor = '0000-00-00'  ORDER BY clave_materia;";
+    $result = mysqli_query($conexion,$sql);
+    $row = mysqli_fetch_array($result);
 
-    header("Location: /SICUEJ_Alumno/Alumno/Evaluacion_Profesor.php?pendientes=$pendientes");
-}
+    $pendientes = $row["evaluacion"];
 
-?>
+    echo "pendientes";
+    if ($pendientes > 0){
+
+        header("Location: /SICUEJ_Alumno/Alumno/Evaluacion_Profesor.php?pendientes=$pendientes");
+    }
+}?>
 <script language="javascript" src="../js/Funciones_Jquery_Alumno.js"></script>
 <script language="javascript">
 </script>
