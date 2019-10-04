@@ -5,7 +5,7 @@
 	-- Proyecto: Sistema Integral - Administrativo
 	-- Autor: Julio César Morales Crispín
 	-- Responsable: Nancy Flores Torrecilla
-	-- Fecha de Creación: [Octubre, 19 2017]	
+	-- Fecha de Creación: [Octubre, 19 2017]
 	-- País: México
 	-- Objetivo: Lista de alumnos egresados en formato XLS
 	-- Última Modificación: [Octubre, 19 2017]
@@ -48,21 +48,21 @@ $fila_programa = @mysqli_fetch_array($resultado_programa);
   <tbody>
 <?php
 		$i = 0;
-		
+
 		while($fila_alumnos = mysqli_fetch_array($resultado_alumnos))
 			{
 				$sql_alumnos_historial = "SELECT SUM(creditos) AS creditos FROM materias JOIN alumnos_historial USING (id_materia) WHERE id_alumno_programa = '".$fila_alumnos["id_alumno_programa"]."' AND (calificacion = 6 || calificacion = 7 || calificacion = 8 || calificacion = 9 || calificacion = 10);";
 				$resultado_alumnos_historial = mysqli_query($conexion, $sql_alumnos_historial);
 				$fila_alumnos_historial = mysqli_fetch_array($resultado_alumnos_historial);
-				
-				if ($fila_alumnos["creditos"] == $fila_alumnos_historial["creditos"])
+
+				if ($fila_alumnos["creditos"] == round($fila_alumnos_historial["creditos"],2))
 					{
 ?>
     <tr>
       <td class="cuej" align="center"><?php echo ++$i; ?></td>
       <td class="cuej" align="center"><?php echo $fila_alumnos["cuenta"]; ?></td>
       <td class="cuej"><?php echo ($fila_alumnos["apellido_paterno"]." ".$fila_alumnos["apellido_materno"]." ".$fila_alumnos["nombre"]); ?></td>
-      <td class="cuej" align="center"><?php echo $fila_alumnos_historial["creditos"] ." de ". $fila_alumnos["creditos"]; ?></td>
+      <td class="cuej" align="center"><?php echo round($fila_alumnos_historial["creditos"],2) ." de ". $fila_alumnos["creditos"]; ?></td>
     </tr>
 <?php
 					}
