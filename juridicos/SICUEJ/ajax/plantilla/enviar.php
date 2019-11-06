@@ -57,9 +57,7 @@ require '../../lib/PHPMailer/src/SMTP.php';
 
 	    $row = @mysqli_fetch_assoc($resultado);
 
-	    $tpl =   base64_decode( $row["contenido"] );
-
-	    $asunto = $row["asunto"];
+	    $tpl =  file_get_contents('../../ERP/captacion/tpl/' . $row["contenido"]) ;
 
 
 
@@ -69,12 +67,8 @@ require '../../lib/PHPMailer/src/SMTP.php';
 	$tpl = str_replace('{{content}}', $content, $tpl);
 
 
-
-
 	foreach ($ids as $key =>$value){
 
-
-	    $asunto = str_replace('{{captacion.nombre}}', $nombres[$key], $asunto);
 
 	    $mail = new PHPMailer;
 	    $mail->isSMTP();
@@ -87,13 +81,10 @@ require '../../lib/PHPMailer/src/SMTP.php';
 	    $mail->Password = 'Natax621.';
 	    $mail->setFrom('maaahernandezgarcia@gmail.com', 'maaahernandezgarcia@gmail.com');
 	    $mail->addAddress($correos[$key], $correos[$key]);
-	    $mail->Subject = $asunto ;//'CUEJ CONTACTO:  ' . $topicos[$key];
+	    $mail->Subject = 'CUEJ CONTACTO:  ' . $topicos[$key];
 	    $mail->CharSet = 'UTF-8';
 
 	    $tpl = str_replace('{{nombre}}', $nombres[$key], $tpl);
-
-
-
 
 	    $mail->msgHTML($tpl); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
 	    $mail->AltBody = 'Ninguno';

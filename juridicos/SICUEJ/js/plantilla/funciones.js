@@ -12,23 +12,80 @@
 // ----------------------------------------------
 
 
-
-
 function eliminar(id)
 {
-    if(confirm("Confirmar eliminar este proceso de captación"))
+    if(confirm("Confirmar eliminar esta plantilla."))
 	{
 		$.ajax({
-			url: '../ajax/captacion/eliminar.php',
+			url: '/SICUEJ/ajax/plantilla/eliminar.php',
 			type: 'POST',
 			data: 'id='+id,
 			success: function(respuesta) {
-				alert(respuesta);
-				Alumnos_Academico(id_alumno);
+
+				 window.location.replace("/SICUEJ/ERP/plantilla");
 			}
 		});
 	}
 }
+
+
+/**
+ * Editar plantilla
+ * @param id
+ * @returns
+ */
+function editar(id)
+{
+
+		$.ajax({
+			url: '/SICUEJ/ajax/plantilla/editar.php',
+			type: 'GET',
+			data: 'id='+id,
+			success: function(respuesta) {
+
+				$('#div_body').html(respuesta);
+
+
+				$('#btnCancel').click(function(){
+					 window.location.replace("/SICUEJ/ERP/plantilla");
+				});
+
+				$('#btnPost').click(function(){
+					if($('#nombre').val().trim() != "")
+					{
+
+
+
+
+								if($('#asunto').val().trim() != ""  )
+								{
+
+							        $("#frmPlantilla").submit();
+
+								}else{
+									alert("Debe indicar un asunto");
+									$('#asunto').focus();
+								}
+
+
+
+
+
+					}
+					else
+					{
+						alert("Debe introducir un alias");
+						$('#nombre').focus();
+					}
+
+
+				});
+
+			}
+		});
+
+}
+
 
 
 //----------------------------------------------
@@ -86,65 +143,52 @@ function buscar(){
 function nuevo()
 {
 	$.ajax({
-	  url: '/SICUEJ/ajax/captacion/nuevo.php',
+	  url: '/SICUEJ/ajax/plantilla/nuevo.php',
 	  success: function(respuesta){
 
 
 		  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-		$('#div_captacion').html(respuesta);
+		$('#div_body').html(respuesta);
 
-		//Sólo letras
-		$('.Solo_Letras').keypress(function(tecla){
-			  if(tecla.charCode >= 48 && tecla.charCode <= 57) return false;
-		});
-
-		//Solo Números
-		$('.Solo_Numeros').keypress(function(tecla){
-			  if(tecla.charCode < 48 || tecla.charCode > 57) return false;
-		});
 
 		//$('input:text').not('#Correo_Electronico, #Usuario, #Password').blur(function(){
 		//	$(this).val($(this).val().toUpperCase());
 		//});
 
-		$('#Btn_Cancelar').click(function(){
-			 window.location.replace("/SICUEJ/ERP/captacion");
+		$('#btnCancel').click(function(){
+			 window.location.replace("/SICUEJ/ERP/plantilla");
 		});
 
 		//$('#Codigo_Postal').blur(function(){
 			//Alumnos_Estado_Buscar($(this).val());
 		//});
 
-		$('#Btn_Nuevo_Registrar').click(function(){
+		$('#btnPost').click(function(){
 			if($('#nombre').val().trim() != "")
 			{
 
-				if($('#correo').val().trim() != "" && $('#correo').val().trim().match(mailformat))
-				{
 
 
-						if($('#edad').val().trim() == "" || !isNaN( $('#edad').val().trim())  )
+
+						if($('#asunto').val().trim() != ""  )
 						{
 
-						insertar();
+					        $("#frmPlantilla").submit();
+
 						}else{
-							alert("Debe insertar  una edad correcta");
-							$('#edad').focus();
+							alert("Debe indicar un asunto");
+							$('#asunto').focus();
 						}
 
 
 
-				}
-				else
-				{
-					alert("Debe introducir un correo electronico valido.");
-					$('#correo').focus();
-				}
+
+
 			}
 			else
 			{
-				alert("Debe introducir el nombre del cliente");
+				alert("Debe introducir un alias");
 				$('#nombre').focus();
 			}
 
@@ -155,36 +199,44 @@ function nuevo()
 }
 
 // ----------------------------------------------
-// Función: Insertar nuevo proceso de captacion
+// Función: Insertar nueva plantilla
 // Parámetros: -
 // Return: Registro Exitoso o no
-// Archivo Origen: captacion.php
+// Archivo Origen: index.php
 // Autor: Jesus Nataren
-// Fecha de Actualización: Mayo, 19 2016
+// Fecha de Actualización: Octubre, 19 2016
 // ----------------------------------------------
 
 function insertar()
 {
-	var datos = $('#Frm_captacion').serialize();
+	var datos = $('#frmPlantilla').serialize();
+
+
+	//var formData = new FormData(document.getElementById("frmPlantilla"));
+
+	var form = $('form')[0];
+
+	var formData = new FormData(form);
+
 
 	$.ajax({
-	  url: '/SICUEJ/ajax/captacion/insertar.php',
-	  data: datos,
+	  url: '/SICUEJ/ajax/plantilla/insertar.php',
+	  data: formData,
 	  type: "POST",
 	  success: function(respuesta){
 
 
 		if(isNaN(respuesta)){
 
-			 alert("Ocurrio un error al registrar un proceso de captación " + respuesta);
-				window.location.replace("/SICUEJ/ERP/captacion");
+			 alert("Ocurrio un error al registrar la plantilla: " + respuesta);
+				window.location.replace("/SICUEJ/ERP/plantilla");
 
 
 
 			 }else{
 
-				alert("Se ha generado un nuevo proceso de captación, ID : " + respuesta);
-				window.location.replace("/SICUEJ/ERP/captacion?rowSelected="+respuesta);
+				alert("Se ha registrado  una nueva plantilla ID :  " + respuesta);
+				window.location.replace("/SICUEJ/ERP/plantilla");
 
 		 }
 
@@ -322,6 +374,9 @@ function verPlantilla(id)
 	  success: function(respuesta){
 
 		$('#divPlantilla').html(respuesta);
+
+
+
 
 	  }
 	});

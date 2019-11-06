@@ -120,15 +120,13 @@
 
 			<tr>
 
-				<td class="cuej" colspan="2">
+				<td class="cuej">
 
 					<h4>Plantilla</h4>
 
 			    </td>
 
-
-
-                <td class="cuej"  align="right">
+                <td class="cuej" colspan="2" align="right">
 
 					<select class="form-control" id="plantilla"  name ="plantilla" aria-describedby="plantillaHelp">
 
@@ -158,12 +156,11 @@
                 </td>
 
 
-
 			</tr>
 
 
 		<tr>
-				<td class="cuej" colspan="4" style="padding-top: 20px">
+				<td class="cuej" colspan="4">
 
 					<h4>Mensaje personalizado</h4>
 
